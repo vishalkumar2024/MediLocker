@@ -33,7 +33,7 @@ function Home() {
                     <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
                         <Heart className="w-4 h-4 text-white" />
                     </div>
-                    <span className="font-display text-xl font-bold text-white">MediVault</span>
+                    <span className="font-doto text-xl font-bold text-white">MediVault</span>
                 </div>
                 <div className="flex items-center gap-3">
                     <Link to="/login" className=" bg-white/5 hover:bg-white/10 text-white/80 hover:text-white border border-white/10 hover:border-white/20 font-medium px-3 py-1.5 rounded-xl transition-all duration-200 active:scale-95; text-sm sm:px-5 sm:py-2.5">Sign in</Link>
@@ -48,7 +48,7 @@ function Home() {
                     <Zap className="w-3.5 h-3.5" />
                     Your complete health record, always accessible
                 </div>
-                <h1 className=" text-5xl md:text-7xl font-bold text-white leading-tight mb-6 max-w-4xl mx-auto">
+                <h1 className="font-title text-5xl md:text-7xl font-bold text-white leading-tight mb-6 max-w-4xl mx-auto">
                     Your Health Data,{' '}
                     <span className=" bg-gradient-to-r from-emerald-300 to-cyan-500 bg-clip-text text-transparent">One Secure Vault</span>
                 </h1>
