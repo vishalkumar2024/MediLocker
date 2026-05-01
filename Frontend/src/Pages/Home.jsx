@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { Shield, Upload, Share2, Activity, Lock, ArrowRight, CheckCircle2, Zap, Heart, ChevronRight } from 'lucide-react'
-
+import Footer from '../Components/Footer.jsx'
 
 const features = [
     { icon: Upload, title: 'Smart Document Upload', desc: 'Upload prescriptions, lab reports, X-rays — all organized automatically by date and type.', color: 'from-primary-500 to-accent-teal' },
@@ -20,12 +20,13 @@ const stats = [
 function Home() {
 
     return (
-        <div className="min-h-screen bg-emerald-950 overflow-x-hidden">
+        <div className="min-h-screen bg-[#0d1117] overflow-x-hidden">
+
             {/* Background mesh */}
             {/* <div className="fixed inset-0 bg-mesh-gradient opacity-60 pointer-events-none" /> */}
-            <div className="fixed  inset-0 bg-[radial-gradient(ellipse_at_top,rgba(37,153,120,0.25)_0%,transparent_60%)] pointer-events-none mb-4" />
+            {/* <div className="fixed  inset-0 bg-[radial-gradient(ellipse_at_top,rgba(37,153,120,0.25)_0%,transparent_60%)] pointer-events-none mb-4" />
 
-            <div className="fixed  inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(57,153,120,0.25)_0%,transparent_60%)] pointer-events-none" />
+            <div className="fixed  inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(57,153,120,0.25)_0%,transparent_60%)] pointer-events-none" /> */}
 
             {/* Navbar */}
             <nav className="relative z-10  flex items-center justify-between px-6 md:px-12 py-5 border-b border-white/5">
@@ -33,7 +34,7 @@ function Home() {
                     <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
                         <Heart className="w-4 h-4 text-white" />
                     </div>
-                    <span className="font-doto text-xl font-bold text-white">MediVault</span>
+                    <span className="font-logo text-xl font-bold text-white">MediLocker</span>
                 </div>
                 <div className="flex items-center gap-3">
                     <Link to="/login" className=" bg-white/5 hover:bg-white/10 text-white/80 hover:text-white border border-white/10 hover:border-white/20 font-medium px-3 py-1.5 rounded-xl transition-all duration-200 active:scale-95; text-sm sm:px-5 sm:py-2.5">Sign in</Link>
@@ -67,10 +68,10 @@ function Home() {
                 </div>
 
                 {/* Stats row */}
-                <div className="flex flex-wrap justify-center gap-8 mt-16 pt-16 border-t border-white/5">
+                <div className="flex flex-wrap  justify-center gap-8 mt-16 pt-16 border-t border-white/5">
                     {stats.map(s => (
                         <div key={s.label} className="text-center">
-                            <div className="bg-gradient-to-r from-emerald-300 to-cyan-500 bg-clip-text text-transparent text-3xl font-bold gradient-text">{s.value}</div>
+                            <div className="bg-gradient-to-r from-emerald-300 to-cyan-500 bg-clip-text text-transparent font-numberText text-3xl font-bold gradient-text">{s.value}</div>
                             <div className="text-white/40 text-sm mt-1">{s.label}</div>
                         </div>
                     ))}
@@ -90,7 +91,7 @@ function Home() {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         {features.map((f, i) => (
-                            <div key={i} className="bg-emerald-900/60 backdrop-blur-md border border-white/8 rounded-2xl p-7  hover:border-primary-500/20 transition-all duration-300">
+                            <div key={i} className="bg-[#151c29] backdrop-blur-md border border-white/8 rounded-2xl p-7  hover:border-primary-500/20 transition-all duration-300">
                                 <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${f.color} p-0.5 mb-5`}>
                                     <div className="w-full h-full bg-surface-800 rounded-[10px] flex items-center justify-center">
                                         <f.icon className="w-5 h-5 text-white" />
@@ -106,7 +107,7 @@ function Home() {
 
             {/* What you can store */}
             <section className="relative  z-10 px-6 md:px-12 pb-24">
-                <div className="max-w-4xl mx-auto  bg-emerald-800/60 backdrop-blur-md border border-white/8 rounded-2xl p-10 text-center">
+                <div className="max-w-4xl mx-auto bg-[#151c29]    backdrop-blur-md border border-white/8 rounded-2xl p-10 text-center">
                     <h2 className="font-display text-2xl font-bold text-white mb-8">What You Can Store</h2>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                         {['Blood Reports', 'X-Rays & MRI', 'Prescriptions', 'Organ Health Data', 'ECG / Echo', 'Vaccination Records', 'Dental Records', 'Eye Tests', 'Allergies & Conditions'].map(item => (
@@ -126,13 +127,16 @@ function Home() {
             </section>
 
             {/* Footer */}
-            <footer className="relative z-10 border-t border-white/5 py-8 px-6 text-center">
+            {/* <footer className="relative z-10 border-t border-white/5 py-8 px-6 text-center">
                 <div className="flex items-center justify-center gap-2 mb-3">
                     <Heart className="w-4 h-4 text-emerald-500" />
                     <span className="font-display font-bold text-white">MediVault</span>
                 </div>
                 <p className="text-white/30 text-xs">Final Year Project · Built with React + Vite + Tailwind CSS</p>
-            </footer>
+            </footer> */}
+            
+            <Footer/>
+
         </div>
     )
 }
