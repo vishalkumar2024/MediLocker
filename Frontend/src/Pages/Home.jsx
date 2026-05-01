@@ -22,12 +22,6 @@ function Home() {
     return (
         <div className="min-h-screen bg-[#0d1117] overflow-x-hidden">
 
-            {/* Background mesh */}
-            {/* <div className="fixed inset-0 bg-mesh-gradient opacity-60 pointer-events-none" /> */}
-            {/* <div className="fixed  inset-0 bg-[radial-gradient(ellipse_at_top,rgba(37,153,120,0.25)_0%,transparent_60%)] pointer-events-none mb-4" />
-
-            <div className="fixed  inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(57,153,120,0.25)_0%,transparent_60%)] pointer-events-none" /> */}
-
             {/* Navbar */}
             <nav className="relative z-10  flex items-center justify-between px-6 md:px-12 py-5 border-b border-white/5">
                 <div className="flex items-center gap-2.5">
