@@ -4,6 +4,7 @@ import Home from './Pages/Home'
 import Login from './Pages/Login'
 import Register from './Pages/Register'
 import Dashboard from './Pages/Dashboard'
+import DashboardHome from './Components/DashboardHome'
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/register' element={<Register/>}></Route>
         <Route path='/dashboard' element={<Dashboard/>}>
-
+          <Route index element={<DashboardHome />} />
         </Route>
  
       </Routes>
