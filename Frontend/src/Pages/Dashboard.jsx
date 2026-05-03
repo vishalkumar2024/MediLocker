@@ -74,7 +74,7 @@ function Dashboard() {
 
                 {/* User card */}
                 <div className="p-3 border-t border-white/5">
-                    <div className="glass-card p-3.5 flex items-center gap-3">
+                    <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-3.5 flex items-center gap-3">
                         <div className="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-500 to-accent-teal flex items-center justify-center text-sm font-bold text-white shrink-0">
                             {initials}
                         </div>
