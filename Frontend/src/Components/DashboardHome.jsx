@@ -225,14 +225,14 @@ function DashboardHome() {
             {/* Recent docs + medications */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 {/* Recent Documents */}
-                <div className="glass-card p-5">
+                <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-5">
                     <div className="flex items-center justify-between mb-4">
-                        <h2 className="section-title">Recent Documents</h2>
+                        <h2 className="text-xl font-semibold text-white">Recent Documents</h2>
                         <Link to="/dashboard/documents" className="text-cyan-400 text-xs hover:text-cyan-300">View all</Link>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-2 ">
                         {recentDocument.map(doc => (
-                            <div key={doc.id} className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/3 transition-colors cursor-pointer group">
+                            <div key={doc.id} className=" bg-white/3 border border-white/5 hover:border-white/30 transition-colors flex items-center gap-3 p-3 rounded-xl hover:bg-white/3 mb-4  cursor-pointer group">
                                 <div className="w-9 h-9 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
                                     <FileText className="w-4 h-4 text-cyan-400" />
                                 </div>
@@ -240,29 +240,29 @@ function DashboardHome() {
                                     <p className="text-sm text-white truncate">{doc.name}</p>
                                     <p className="text-xs text-white/30">{doc.date} · {doc.size}</p>
                                 </div>
-                                <span className="badge bg-white/5 text-white/40 text-xs shrink-0">{doc.format}</span>
+                                <span className="p-2 rounded-xl bg-white/5 text-white/40 text-xs shrink-0">{doc.format}</span>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {/* Active Medications */}
-                <div className="glass-card p-5">
+                <div className="bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-5">
                     <div className="flex items-center justify-between mb-4">
-                        <h2 className="section-title">Active Medications</h2>
+                        <h2 className="text-xl font-semibold text-white">Active Medications</h2>
                         <Link to="/dashboard/medications" className="text-cyan-400 text-xs hover:text-cyan-300">View all</Link>
                     </div>
                     <div className="space-y-2">
                         {mockMedications.map(med => (
-                            <div key={med.id} className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/3 transition-colors cursor-pointer">
-                                <div className="w-9 h-9 rounded-xl bg-accent-violet/10 flex items-center justify-center shrink-0">
-                                    <Pill className="w-4 h-4 text-accent-violet" />
+                            <div key={med.id} className=" bg-white/3 border border-white/5 hover:border-white/30  mb-4 flex items-center gap-3 p-3 rounded-xl hover:bg-white/3 transition-colors cursor-pointer">
+                                <div className="w-9 h-9 rounded-xl bg-violet-500/10 flex items-center justify-center shrink-0">
+                                    <Pill className="w-4 h-4 text-violet-400" />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <p className="text-sm text-white font-medium">{med.name} <span className="text-white/40 font-normal">{med.dose}</span></p>
                                     <p className="text-xs text-white/30">{med.frequency} · {med.time}</p>
                                 </div>
-                                <span className="badge bg-cyan-500/10 text-cyan-400">Active</span>
+                                <span className="p-2 rounded-xl bg-white/5 text-white/40 text-xs shrink-0">Active</span>
                             </div>
                         ))}
                     </div>
