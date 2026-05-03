@@ -1,0 +1,120 @@
+import { useState } from 'react'
+import { Outlet, NavLink, useNavigate } from 'react-router-dom'
+import {
+    LayoutDashboard, User, FileText, Droplets, Activity, Calendar,
+    Pill, Share2, Heart, LogOut, Menu, X, Bell, ChevronRight
+} from 'lucide-react'
+import clsx from 'clsx'
+
+const navItems = [
+    { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, end: true },
+    { to: '/dashboard/profile', label: 'My Profile', icon: User },
+    { to: '/dashboard/documents', label: 'Documents', icon: FileText },
+    { to: '/dashboard/blood-report', label: 'Blood Report', icon: Droplets },
+    { to: '/dashboard/organs', label: 'Organ Health', icon: Activity },
+    { to: '/dashboard/appointments', label: 'Appointments', icon: Calendar },
+    { to: '/dashboard/medications', label: 'Medications', icon: Pill },
+    { to: '/dashboard/share', label: 'Share Records', icon: Share2 },
+]
+
+function Dashboard() {
+    const navigate = useNavigate()
+    const [sidebarOpen, setSidebarOpen] = useState(false)
+
+    const handleLogout = () => {
+        logout()
+        navigate('/')
+    }
+
+    // const initials = user?.name?.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'MV'
+    const initials = 'MV'
+
+    return (
+        <div className="min-h-screen bg-[#0d1117] flex">
+
+            {/* Mobile overlay */}
+            {/* {sidebarOpen && (
+        <div className="fixed inset-0 bg-black/60 z-20 lg:hidden" onClick={() => setSidebarOpen(false)} />
+      )} */}
+
+            {/* Sidebar */}
+            <aside className={clsx(
+                'fixed top-0 left-0 h-full w-64 bg-[#0d1117] border-r border-white/5 z-30 flex flex-col transition-transform duration-300',
+                'lg:translate-x-0 lg:static lg:z-auto',
+                sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+            )} style={{ background: '#070c12' }}>
+                {/* Logo */}
+                <div className="flex items-center justify-between px-5 py-5 border-b border-white/5">
+                    <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+                            <Heart className="w-4 h-4 text-white" />
+                        </div>
+                        <span className="font-logo text-xl font-bold text-white">MediLocker</span>
+                    </div>
+                    <button className="lg:hidden text-white/40 hover:text-white" onClick={() => setSidebarOpen(false)}>
+                        <X className="w-5 h-5" />
+                    </button>
+                </div>
+
+                {/* Nav */}
+                <nav className="flex-1 px-3 py-4 overflow-y-auto space-y-0.5">
+                    {navItems.map((item, i) => (
+                        <NavLink
+                            key={item.to}
+                            to={item.to}
+                            end={item.end}
+                            onClick={() => setSidebarOpen(false)}
+                            className={({ isActive }) => clsx('flex items-center gap-3 px-4 py-3 rounded-xl text-white/60 hover:text-white hover:bg-white/5 transition-all duration-200 cursor-pointer font-medium text-sm', isActive && ' text-cyan-400 bg-cyan-500/10 border border-cyan-500/20')}
+                        >
+                            <item.icon className="w-4.5 h-4.5 " />
+                            {item.label}
+                        </NavLink>
+                    ))}
+                </nav>
+
+                {/* User card */}
+                <div className="p-3 border-t border-white/5">
+                    <div className="glass-card p-3.5 flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-500 to-accent-teal flex items-center justify-center text-sm font-bold text-white shrink-0">
+                            {initials}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium text-white truncate">{"Arjun"}</p>
+                            <p className="text-xs text-white/40 truncate">{"B+"} · {"Male"}</p>
+                        </div>
+                        <button onClick={handleLogout} title="Logout" className="text-white/30 hover:text-rose-400 transition-colors">
+                            <LogOut className="w-4 h-4" />
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            {/* Main */}
+            <div className="flex-1  flex flex-col min-w-0">
+                {/* Top bar */}
+                <header className="sticky top-0 z-10 flex items-center justify-between px-5 py-4 border-b border-white/5 bg-surface-900/80 backdrop-blur-md">
+                    <button className="lg:hidden text-white/60 hover:text-white" onClick={() => setSidebarOpen(true)}>
+                        <Menu className="w-5 h-5" />
+                    </button>
+                    <div className="flex items-center gap-3 ml-auto">
+                        <button className="relative w-9 h-9 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/10 text-white/50 hover:text-white transition-all">
+                            <Bell className="w-4 h-4" />
+                            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-cyan-500 rounded-full" />
+                        </button>
+                        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-500 to-accent-teal flex items-center justify-center text-sm font-bold text-white">
+                            {initials}
+                        </div>
+                    </div>
+                </header>
+
+                {/* Page content */}
+                <main className="flex-1 p-5 md:p-7 overflow-y-auto animate-in">
+                    <Outlet />
+
+                </main>
+            </div>
+        </div>
+    )
+}
+
+export default Dashboard
