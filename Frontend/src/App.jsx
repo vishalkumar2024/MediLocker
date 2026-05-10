@@ -6,6 +6,7 @@ import Register from './Pages/Register'
 import Dashboard from './Pages/Dashboard'
 import DashboardHome from './Components/DashboardHome'
 import DashboardProfile from './Components/DashboardProfile'
+import DashboardBloodReport from './Components/DashboardBloodReport'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard/>}>
           <Route index element={<DashboardHome />} />
           <Route path='profile' element={<DashboardProfile/>}></Route>
+          <Route path='blood-report' element={<DashboardBloodReport/>}></Route>
 
         </Route>
  
