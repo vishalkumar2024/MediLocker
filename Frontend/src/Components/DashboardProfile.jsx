@@ -47,7 +47,7 @@ function DashboardProfile() {
                     {initials}
                 </div>
                 <div>
-                    <h2 className="font-display text-xl font-bold text-white">{user?.name}</h2>
+                    <h2 className="font-ss text-xl  text-white">{user?.name}</h2>
                     <p className="text-white/40 text-sm mt-1">{user?.email}</p>
                     <div className="flex flex-wrap items-center gap-3 mt-3">
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
@@ -62,9 +62,9 @@ function DashboardProfile() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 {/* Personal Info */}
-                <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-5">
+                <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-7">
                     <h2 className="text-xl font-semibold text-white mb-4">Personal Information</h2>
-                    <div className="space-y-4">
+                    <div className="space-y-6">
                         {fields.map(f => (
                             <div key={f.key}>
                                 <label className="block text-xs text-white/40 mb-1.5 font-medium uppercase tracking-wide">{f.label}</label>
