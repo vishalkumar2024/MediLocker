@@ -19,14 +19,14 @@ const labels = {
 const bloodComponents = [
     {
         name: "Hemoglobin",
-        value: "140.2",
+        value: "14.2",
         min: 13.8,
         max: 17.2,
         unit: "g/dL"
     },
     {
         name: "RBC",
-        value: 4.0,
+        value: 4.6,
         min: 4.7,
         max: 6.1,
         unit: "million/µL",
@@ -48,7 +48,7 @@ const bloodComponents = [
     {
         name: "Hematocrit",
         value: 42,
-        min: 41,
+        min: 40,
         max: 50,
         unit: "%",
     },
@@ -61,7 +61,7 @@ const bloodComponents = [
     },
     {
         name: "Cholesterol",
-        value: 198,
+        value: 211,
         min: 0,
         max: 200,
         unit: "mg/µL",
@@ -92,6 +92,7 @@ function DashboardBloodReport() {
 
     const [countNormal, setCountNormal] = useState(0);
     const [countWarning, setCountWarning] = useState(0);
+    const [countCritical, setCountCritical] = useState(0);
 
     useEffect(() => {
 
@@ -127,7 +128,7 @@ function DashboardBloodReport() {
             <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-5 ">
                 <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center">
-                        <Droplets className="w-5 h-5 text-rose-500" />
+                        <Droplets className="w-5 h-5 text-red-500" />
                     </div>
                     <div>
                         <h2 className="font-display font-semibold text-white">Blood Analysis Summary</h2>
@@ -137,7 +138,7 @@ function DashboardBloodReport() {
                 <div className="flex  gap-4">
                     {[
                         { label: 'Normal', count: countNormal, color: 'bg-cyan-500' },
-                        { label: 'Warning', count: countWarning, color: 'bg-amber-500' },
+                        { label: 'Warning', count: countWarning, color: 'bg-orange-500' },
                         { label: 'Critical', count: countCritical, color: 'bg-rose-500' },
                     ].map(s => (
                         <div key={s.label} className="flex items-center gap-2 text-sm">
@@ -161,10 +162,10 @@ function DashboardBloodReport() {
                         <div key={item.name} className=' bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-4 hover:scale-[1.01] transition-transform'>
                             <div className="flex items-center justify-between mb-3">
                                 <span className="text-xs text-white/40 font-medium">{item.name}</span>
-                                <span className={` px-2 py-1 rounded-2xl  border ${(isNormal) ? "border-cyan-500/90 text-cyan-500  bg-cyan-500/5" : "border-amber-500/90 text-amber-500 bg-amber-500/5"}  text-xs`}>{(isNormal) ? "Normal" : "Warning"}</span>
+                                <span className={` px-2 py-1 rounded-2xl  border ${(isNormal) ? "border-cyan-500/90 text-cyan-500  bg-cyan-500/5" : "border-orange-500/90 text-orange-500 bg-orange-500/5"}  text-xs`}>{(isNormal) ? "Normal" : "Warning"}</span>
                             </div>
                             <div className="flex items-baseline gap-1.5 mb-2">
-                                <span className='text-cyan-500/80 text-2xl font-bold'>
+                                <span className={`${(isNormal) ? "text-cyan-500/80"  :"text-orange-500" } text-2xl font-bold`}>
                                     {item.value}
                                 </span>
                                 <span className="text-xs text-white/30">{item.unit}</span>
