@@ -1,6 +1,6 @@
 // import { mockBloodReport, mockVitals } from '@/data/mockData'
 import { Droplets, TrendingUp, TrendingDown, Minus, Info } from 'lucide-react'
-// import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, LineChart, Line } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, LineChart, Line } from 'recharts'
 import clsx from 'clsx'
 import { useState, useEffect } from 'react'
 
@@ -32,18 +32,18 @@ const bloodComponents = [
         unit: "million/µL",
     },
     {
-        name: "WBC",
-        value: 8200,
-        min: 4500,
-        max: 11000,
-        unit: "cells/µL",
-    },
-    {
         name: "Platelets",
         value: 245000,
         min: 150000,
         max: 450000,
         unit: "platelets/µL",
+    },
+    {
+        name: "WBC",
+        value: 8200,
+        min: 4500,
+        max: 11000,
+        unit: "cells/µL",
     },
     {
         name: "Hematocrit",
@@ -75,17 +75,17 @@ const bloodComponents = [
     },
 ];
 
-// const CustomTooltip = ({ active, payload, label }) => {
-//     if (active && payload?.length) {
-//         return (
-//             <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-3 text-xs">
-//                 <p className="text-white/60 mb-1">{label}</p>
-//                 {payload.map(p => <p key={p.dataKey} className="text-primary-400 font-medium">{p.value} {p.name}</p>)}
-//             </div>
-//         )
-//     }
-//     return null
-// }
+const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload?.length) {
+        return (
+            <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-3 text-xs">
+                <p className="text-white/60 mb-1">{label}</p>
+                {payload.map(p => <p key={p.dataKey} className="text-cyan-400 font-medium">{p.value} {p.name}</p>)}
+            </div>
+        )
+    }
+    return null
+}
 
 
 function DashboardBloodReport() {
@@ -165,7 +165,7 @@ function DashboardBloodReport() {
                                 <span className={` px-2 py-1 rounded-2xl  border ${(isNormal) ? "border-cyan-500/90 text-cyan-500  bg-cyan-500/5" : "border-orange-500/90 text-orange-500 bg-orange-500/5"}  text-xs`}>{(isNormal) ? "Normal" : "Warning"}</span>
                             </div>
                             <div className="flex items-baseline gap-1.5 mb-2">
-                                <span className={`${(isNormal) ? "text-cyan-500/80"  :"text-orange-500" } text-2xl font-bold`}>
+                                <span className={`${(isNormal) ? "text-cyan-500/80" : "text-orange-500"} text-2xl font-bold`}>
                                     {item.value}
                                 </span>
                                 <span className="text-xs text-white/30">{item.unit}</span>
@@ -178,31 +178,20 @@ function DashboardBloodReport() {
             </div>
 
             {/* Charts */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-5">
-                    <h2 className="section-title mb-4">Blood Parameters</h2>
-                    {/* <ResponsiveContainer width="100%" height={220}>
-                        <BarChart data={chartData.slice(0, 5)} barSize={28}>
+            <div className="">
+
+                {/* !st chart */}
+                <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-5 mb-5">
+                    <h2 className="text-xl font-semibold text-white mb-4">Blood Parameters</h2>
+                    <ResponsiveContainer width="100%" height={220}>
+                        <BarChart data={bloodComponents} barSize={28}>
                             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
                             <XAxis dataKey="name" tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 11 }} axisLine={false} tickLine={false} />
                             <YAxis tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 11 }} axisLine={false} tickLine={false} />
                             <Tooltip content={<CustomTooltip />} />
                             <Bar dataKey="value" name="Value" fill="#259978" radius={[6, 6, 0, 0]} />
                         </BarChart>
-                    </ResponsiveContainer> */}
-                </div>
-
-                <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-5">
-                    <h2 className="section-title mb-4">Blood Sugar Trend</h2>
-                    {/* <ResponsiveContainer width="100%" height={220}>
-                        <LineChart data={mockVitals}>
-                            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
-                            <XAxis dataKey="date" tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 11 }} axisLine={false} tickLine={false} />
-                            <YAxis tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 11 }} axisLine={false} tickLine={false} />
-                            <Tooltip content={<CustomTooltip />} />
-                            <Line type="monotone" dataKey="sugar" name="mg/dL" stroke="#f59e0b" strokeWidth={2.5} dot={{ fill: '#f59e0b', r: 3 }} />
-                        </LineChart>
-                    </ResponsiveContainer> */}
+                    </ResponsiveContainer>
                 </div>
             </div>
 
