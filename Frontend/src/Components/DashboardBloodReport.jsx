@@ -114,9 +114,6 @@ function DashboardBloodReport() {
 
     }, [bloodComponents]);
 
-    // const entries = Object.entries(mockBloodReport)
-    // const chartData = entries.map(([key, val]) => ({ name: labels[key]?.split(' ')[0] || key, value: typeof val.value === 'number' ? val.value : parseFloat(val.value) }))
-
     return (
         <div className="space-y-6">
             <div>
