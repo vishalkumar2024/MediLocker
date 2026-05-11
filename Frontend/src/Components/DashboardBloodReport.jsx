@@ -2,7 +2,7 @@
 import { Droplets, TrendingUp, TrendingDown, Minus, Info } from 'lucide-react'
 // import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, LineChart, Line } from 'recharts'
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const statusConfig = {
     normal: { label: 'Normal', color: 'text-primary-400', bg: 'bg-primary-500/10', border: 'border-primary-500/20' },
@@ -15,6 +15,65 @@ const labels = {
     hemoglobin: 'Hemoglobin', rbc: 'RBC', wbc: 'WBC', platelets: 'Platelets',
     hematocrit: 'Hematocrit', glucose: 'Glucose', cholesterol: 'Cholesterol', triglycerides: 'Triglycerides',
 }
+
+const bloodComponents = [
+    {
+        name: "Hemoglobin",
+        value: "140.2",
+        min: 13.8,
+        max: 17.2,
+        unit: "g/dL"
+    },
+    {
+        name: "RBC",
+        value: 4.0,
+        min: 4.7,
+        max: 6.1,
+        unit: "million/µL",
+    },
+    {
+        name: "WBC",
+        value: 8200,
+        min: 4500,
+        max: 11000,
+        unit: "cells/µL",
+    },
+    {
+        name: "Platelets",
+        value: 245000,
+        min: 150000,
+        max: 450000,
+        unit: "platelets/µL",
+    },
+    {
+        name: "Hematocrit",
+        value: 42,
+        min: 41,
+        max: 50,
+        unit: "%",
+    },
+    {
+        name: "Glucose",
+        value: 89,
+        min: 70,
+        max: 99,
+        unit: "mg/dL",
+    },
+    {
+        name: "Cholesterol",
+        value: 198,
+        min: 0,
+        max: 200,
+        unit: "mg/µL",
+    },
+    {
+        name: "Triglycerides",
+        value: 145,
+        min: 0,
+        max: 150,
+        unit: "mg/µL",
+    },
+];
 
 // const CustomTooltip = ({ active, payload, label }) => {
 //     if (active && payload?.length) {
@@ -31,13 +90,31 @@ const labels = {
 
 function DashboardBloodReport() {
 
+    const [countNormal, setCountNormal] = useState(0);
+    const [countWarning, setCountWarning] = useState(0);
+
+    useEffect(() => {
+
+        let normalCount = 0;
+        let warningCount = 0;
+        console.log("use effect is working")
+        bloodComponents.forEach((item) => {
+
+            if (item.value >= item.min && item.value <= item.max) {
+                normalCount++;
+            } else {
+                warningCount++;
+            }
+
+        });
+
+        setCountNormal(normalCount);
+        setCountWarning(warningCount);
+
+    }, [bloodComponents]);
+
     // const entries = Object.entries(mockBloodReport)
     // const chartData = entries.map(([key, val]) => ({ name: labels[key]?.split(' ')[0] || key, value: typeof val.value === 'number' ? val.value : parseFloat(val.value) }))
-
-    const [countNormal, setCountNormal] = useState(0)
-    const [countWarning, setCountWarning] = useState(0)
-    const [countCritical, setCountCritical] = useState(0)
-
 
     return (
         <div className="space-y-6">
@@ -54,14 +131,14 @@ function DashboardBloodReport() {
                     </div>
                     <div>
                         <h2 className="font-display font-semibold text-white">Blood Analysis Summary</h2>
-                        <p className="text-white/40 text-xs">{7} normal · {1} needs attention</p>
+                        <p className="text-white/40 text-xs">{countNormal} normal · {countWarning} needs attention</p>
                     </div>
                 </div>
                 <div className="flex  gap-4">
                     {[
-                        { label: 'Normal', count:  7 , color: 'bg-cyan-500' },
-                        { label: 'Warning', count:  1 , color: 'bg-amber-500' },
-                        { label: 'Critical', count:  0 , color: 'bg-rose-500' },
+                        { label: 'Normal', count: countNormal, color: 'bg-cyan-500' },
+                        { label: 'Warning', count: countWarning, color: 'bg-amber-500' },
+                        { label: 'Critical', count: countCritical, color: 'bg-rose-500' },
                     ].map(s => (
                         <div key={s.label} className="flex items-center gap-2 text-sm">
                             <div className={clsx('w-2.5 h-2.5 rounded-full', s.color)} />
@@ -74,34 +151,28 @@ function DashboardBloodReport() {
             {/* Metrics grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
-                <div  className=' bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-4 hover:scale-[1.01] transition-transform'>
-                    <div className="flex items-center justify-between mb-3">
-                        <span className="text-xs text-white/40 font-medium">Hemoglobin</span>
-                        <span className=" px-2 py-1 rounded-2xl bg-cyan-500/10 border border-cyan-500/90 text-cyan-500 text-xs">Normal</span>
-                    </div>
-                    <div className="flex items-baseline gap-1.5 mb-2">
-                        <span className='text-cyan-500/80 text-2xl font-bold'>
-                            14.2
-                        </span>
-                        <span className="text-xs text-white/30">g/dL</span>
-                    </div>
-                    <p className="text-xs text-white/25">Normal: 13.5–17.5</p>
-                </div>
+                {bloodComponents.map(item => {
 
-                <div  className=' bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-4 hover:scale-[1.01] transition-transform'>
-                    <div className="flex items-center justify-between mb-3">
-                        <span className="text-xs text-white/40 font-medium">RBC</span>
-                        <span className=" px-2 py-1 rounded-2xl bg-cyan-500/5 border border-cyan-500/90 text-cyan-500 text-xs">Normal</span>
-                    </div>
-                    <div className="flex items-baseline gap-1.5 mb-2">
-                        <span className='text-cyan-500/80 text-2xl font-bold'>
-                            4.8
-                        </span>
-                        <span className="text-xs text-white/30">million/µL</span>
-                    </div>
-                    <p className="text-xs text-white/25">Normal: 4.5–5.5</p>
-                </div>
+                    const isNormal =
+                        item.value >= item.min &&
+                        item.value <= item.max;
 
+                    return (
+                        <div key={item.name} className=' bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-4 hover:scale-[1.01] transition-transform'>
+                            <div className="flex items-center justify-between mb-3">
+                                <span className="text-xs text-white/40 font-medium">{item.name}</span>
+                                <span className={` px-2 py-1 rounded-2xl  border ${(isNormal) ? "border-cyan-500/90 text-cyan-500  bg-cyan-500/5" : "border-amber-500/90 text-amber-500 bg-amber-500/5"}  text-xs`}>{(isNormal) ? "Normal" : "Warning"}</span>
+                            </div>
+                            <div className="flex items-baseline gap-1.5 mb-2">
+                                <span className='text-cyan-500/80 text-2xl font-bold'>
+                                    {item.value}
+                                </span>
+                                <span className="text-xs text-white/30">{item.unit}</span>
+                            </div>
+                            <p className="text-xs text-white/25">Normal: {item.min}-{item.max}</p>
+                        </div>
+                    )
+                })}
 
             </div>
 
