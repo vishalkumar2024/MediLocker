@@ -1,7 +1,7 @@
-// import { mockOrgans } from '@/data/mockData'
 import { Activity, CheckCircle2, AlertTriangle, Clock, Plus, CircleCheck } from 'lucide-react'
-// import { createIcons, circleCheck } from 'lucide';
 import clsx from 'clsx'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 
 const statusConfig = {
@@ -55,18 +55,30 @@ const organHealth = [
     },
 ]
 
-const colorMap = {
-    rose: 'from-accent-rose/20 to-accent-rose/5',
-    cyan: 'from-accent-cyan/20 to-accent-cyan/5',
-    amber: 'from-accent-amber/20 to-accent-amber/5',
-    violet: 'from-accent-violet/20 to-accent-violet/5',
-    emerald: 'from-accent-emerald/20 to-accent-emerald/5',
-}
 
 function DashboardOrganHealth() {
 
-    // const healthyCount = mockOrgans.filter(o => o.status === 'healthy').length
-    // const warningCount = mockOrgans.filter(o => o.status === 'warning').length
+    const [countHealthy, setCountHealthy] = useState(0);
+    const [countAttention, setCountAttention] = useState(0);
+
+    useEffect(() => {
+
+        let HealthyCount = 0;
+        let AttentionCount = 0;
+        organHealth.forEach((item) => {
+
+            if (item.status=="Healthy") {
+                HealthyCount++;
+            } else {
+                AttentionCount++;
+            }
+
+        });
+
+        setCountHealthy(HealthyCount);
+        setCountAttention(AttentionCount);
+
+    }, [organHealth]);
 
 
     return (
@@ -84,8 +96,8 @@ function DashboardOrganHealth() {
             {/* Summary */}
             <div className="grid grid-cols-3 gap-4">
                 {[
-                    { label: 'Healthy', count: 5, color: 'text-cyan-400', bg: 'bg-cyan-500/10' },
-                    { label: 'Attention', count: 2, color: 'text-amber-500', bg: 'bg-amber-500/10' },
+                    { label: 'Healthy', count: countHealthy, color: 'text-cyan-400', bg: 'bg-cyan-500/10' },
+                    { label: 'Attention', count: countAttention, color: 'text-amber-500', bg: 'bg-amber-500/10' },
                     { label: 'Critical', count: 0, color: 'text-red-500', bg: 'bg-red-500/10' },
                 ].map(s => (
                     <div key={s.label} className=" bg-[#1a222d]  backdrop-blur-md border border-white/8 rounded-2xl p-4 text-center">
@@ -102,18 +114,17 @@ function DashboardOrganHealth() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {organHealth.map(organ => {
 
-                    const isNormal = true
-                    // const cfg = statusConfig[organ.status]
-                    // const StatusIcon = cfg.icon
+                    const isHealthy= (organ.status=="Healthy")?true:false;
+
                     return (
-                        <div key={organ.name} className=' bg-[#1b2a2f] backdrop-blur-md  border-white/8 rounded-2xl p-5 border hover:scale-[1.01] transition-all duration-200 cursor-default'>
+                        <div key={organ.name} className=' bg-[#1b2a2f] backdrop-blur-md  border-white/8 rounded-2xl p-5 border hover:scale-[1.01] transition-all duration-200 '>
                             {/* Gradient bg based on organ color */}
                             <div />
                             <div className="relative">
                                 <div className="flex items-start justify-between mb-4 ">
                                     <div className="text-3xl ">{organ.icon}</div>
 
-                                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${(isNormal) ? "border-cyan-500/90 text-cyan-500  bg-cyan-500/5" : "border-orange-500/90 text-orange-500 bg-orange-500/5"}  text-xs`}>
+                                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${(isHealthy) ? "border-cyan-500/90 text-cyan-500  bg-cyan-500/5" : "border-orange-500/90 text-orange-500 bg-orange-500/5"}  text-xs`}>
                                         <CircleCheck className="w-3 h-3" />
                                         {organ.status}
                                     </span>
@@ -140,13 +151,13 @@ function DashboardOrganHealth() {
             </div>
 
             {/* Body diagram placeholder */}
-            <div className="glass-card p-8 text-center">
+            <div className=" bg-[#1b2a2f] backdrop-blur-md border border-white/8 rounded-2xl p-8 text-center">
                 <div className="text-6xl mb-4">🫀</div>
-                <h2 className="font-display text-lg font-semibold text-white mb-2">Interactive Body Map</h2>
+                <h2 className=" text-lg font-semibold text-white mb-2">Interactive Body Map</h2>
                 <p className="text-white/30 text-sm max-w-sm mx-auto">
                     An interactive 3D body diagram is coming soon. You'll be able to click on any organ to view detailed health data and history.
                 </p>
-                <button className="btn-ghost text-sm mt-4">Get Notified When Available</button>
+                <button className=" bg-white/5 hover:bg-white/10 text-white/80 hover:text-white border border-white/10 hover:border-white/20 font-medium px-5 py-2.5 rounded-xl transition-all duration-200 active:scale-95 text-sm mt-4">Get Notified When Available</button>
             </div>
         </div>
     )
