@@ -7,6 +7,7 @@ import Dashboard from './Pages/Dashboard'
 import DashboardHome from './Components/DashboardHome'
 import DashboardProfile from './Components/DashboardProfile'
 import DashboardBloodReport from './Components/DashboardBloodReport'
+import DashboardOrganHealth from './Components/DashboardOrganHealth'
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
           <Route index element={<DashboardHome />} />
           <Route path='profile' element={<DashboardProfile/>}></Route>
           <Route path='blood-report' element={<DashboardBloodReport/>}></Route>
-
+          <Route path="organs" element={<DashboardOrganHealth/>}></Route>
         </Route>
  
       </Routes>

@@ -168,7 +168,7 @@ function DashboardHome() {
                 ))}
             </div>
 
-                        {/* Recent docs + medications */}
+            {/* Recent docs + medications */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 {/* Recent Documents */}
                 <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-5">
