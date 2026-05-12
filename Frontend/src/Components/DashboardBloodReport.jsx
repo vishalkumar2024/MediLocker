@@ -98,7 +98,6 @@ function DashboardBloodReport() {
 
         let normalCount = 0;
         let warningCount = 0;
-        console.log("use effect is working")
         bloodComponents.forEach((item) => {
 
             if (item.value >= item.min && item.value <= item.max) {
