@@ -1,11 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 const organs = [
     {
         name: "Heart",
         emoji: "🫀",
         image:
-            "https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?q=80&w=1200&auto=format&fit=crop",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr4CKReYVLH2lDi3dXloODeujSFpwybL7KDw&s",
+        link: 'https://en.wikipedia.org/wiki/Heart',
         info: [
             "Pumps blood throughout the body",
             "Supplies oxygen and nutrients",
@@ -17,7 +20,8 @@ const organs = [
         name: "Lungs",
         emoji: "🫁",
         image:
-            "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGsot6ZMfstVZSm0v6CzNj1SpoFPO-7pZtGQ&s",
+        link: "https://en.wikipedia.org/wiki/Lung",
         info: [
             "Help in breathing process",
             "Exchange oxygen and carbon dioxide",
@@ -29,7 +33,8 @@ const organs = [
         name: "Liver",
         emoji: "🧬",
         image:
-            "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUH1inM5onujKcsUSe5UxxFbX_LXypbqRA5A&s",
+        link: "https://en.wikipedia.org/wiki/Liver",
         info: [
             "Detoxifies harmful substances",
             "Produces bile for digestion",
@@ -41,7 +46,8 @@ const organs = [
         name: "Kidney",
         emoji: "🫘",
         image:
-            "https://images.unsplash.com/photo-1581595219315-a187dd40c322?q=80&w=1200&auto=format&fit=crop",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb4ky_J-TaUCWUtarqs2JzhGJTaV_qdahG3g&s",
+        link: "https://en.wikipedia.org/wiki/Kidney",
         info: [
             "Filters waste from blood",
             "Maintains water balance",
@@ -53,7 +59,8 @@ const organs = [
         name: "Brain",
         emoji: "🧠",
         image:
-            "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?q=80&w=1200&auto=format&fit=crop",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFJyoGn_wDVkC-zxGAlk-4IBJvC7FjXV8QFQ&s",
+        link: "https://en.wikipedia.org/wiki/Brain",
         info: [
             "Controls body functions",
             "Processes thoughts and memory",
@@ -65,7 +72,8 @@ const organs = [
         name: "Bones",
         emoji: "🦴",
         image:
-            "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=1200&auto=format&fit=crop",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgWtPaWOIkWMcJ3HcIhXVK3qc31LMILZ7jTg&s",
+        link: "https://en.wikipedia.org/wiki/Bones",
         info: [
             "Provide body structure",
             "Protect internal organs",
@@ -77,7 +85,7 @@ const organs = [
 
 const HumanOrgans = () => {
     return (
-        <section className="min-h-screen bg-[#0f172a] py-14 px-5">
+        <section className="min-h-screen bg-[#0d1117]  py-14 px-5">
             <div className="max-w-7xl mx-auto">
 
                 {/* Heading */}
@@ -97,7 +105,7 @@ const HumanOrgans = () => {
                     {organs.map((organ, index) => (
                         <div
                             key={index}
-                            className="bg-[#111827] border border-white/10 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-300"
+                            className="bg-[#141a23] border border-white/10 rounded-3xl overflow-hidden shadow-xl hover:scale-[1.02] transition-all duration-300"
                         >
                             {/* Image */}
                             <div className="h-52 overflow-hidden">
@@ -127,9 +135,9 @@ const HumanOrgans = () => {
                                     ))}
                                 </ul>
 
-                                <button className="mt-6 w-full bg-cyan-500 hover:bg-cyan-400 text-black font-semibold py-3 rounded-xl transition">
+                                <Link to={ organ.link} className=" bg-cyan-500 hover:bg-cyan-400 text-white font-medium px-5 py-2.5 rounded-xl mt-3 transition-all duration-200 hover:shadow-lg hover:shadow-cyan-500/20 active:scale-95 text-sm flex items-center gap-2">
                                     Learn More
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     ))}
