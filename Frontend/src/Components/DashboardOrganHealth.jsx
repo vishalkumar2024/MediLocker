@@ -1,7 +1,8 @@
 import { Activity, CheckCircle2, AlertTriangle, Clock, Plus, CircleCheck } from 'lucide-react'
 import clsx from 'clsx'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useState ,useEffect} from 'react'
+import { Link } from 'react-router-dom'
+import bodyImage from '../assets/body.png'
 
 
 const statusConfig = {
@@ -152,12 +153,14 @@ function DashboardOrganHealth() {
 
             {/* Body diagram placeholder */}
             <div className=" bg-[#1b2a2f] backdrop-blur-md border border-white/8 rounded-2xl p-8 text-center">
-                <div className="text-6xl mb-4">🫀</div>
-                <h2 className=" text-lg font-semibold text-white mb-2">Interactive Body Map</h2>
-                <p className="text-white/30 text-sm max-w-sm mx-auto">
-                    An interactive 3D body diagram is coming soon. You'll be able to click on any organ to view detailed health data and history.
+                <div className="text-6xl  flex items-center justify-center mb-4">
+                    <img src={bodyImage} alt=""  />
+                </div>
+                <h2 className=" text-lg font-semibold text-white mb-2">Know about Human Body Organs</h2>
+                <p className="text-white/30 text-sm max-w-sm mx-auto mb-5">
+                    Learn about important human body organs and understand their functions in maintaining a healthy life.
                 </p>
-                <button className=" bg-white/5 hover:bg-white/10 text-white/80 hover:text-white border border-white/10 hover:border-white/20 font-medium px-5 py-2.5 rounded-xl transition-all duration-200 active:scale-95 text-sm mt-4">Get Notified When Available</button>
+                <Link to='/body_organs' className=" bg-white/5 hover:bg-white/10 text-white/80 hover:text-white border border-white/10 hover:border-white/20 font-medium px-5 py-2.5 rounded-xl transition-all duration-200 active:scale-95 text-sm mt-4">Explore</Link>
             </div>
         </div>
     )
