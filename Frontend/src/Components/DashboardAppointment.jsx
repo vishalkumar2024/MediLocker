@@ -61,33 +61,33 @@ export default function AppointmentsPage() {
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-xs text-white/40 mb-1.5">Doctor Name</label>
-                                    <input value={form.doctor} onChange={e => setForm(p => ({ ...p, doctor: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-primary-500/60 text-white placeholder:text-white/30 rounded-xl px-4 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm py-2.5" placeholder="Dr. Name" required />
+                                    <input value={form.doctor} onChange={e => setForm(p => ({ ...p, doctor: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm py-2.5" placeholder="Dr. Name" required />
                                 </div>
                                 <div>
                                     <label className="block text-xs text-white/40 mb-1.5">Specialty</label>
-                                    <input value={form.specialty} onChange={e => setForm(p => ({ ...p, specialty: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-primary-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-primary-500/20 text-sm py-2.5" placeholder="Cardiologist" required />
+                                    <input value={form.specialty} onChange={e => setForm(p => ({ ...p, specialty: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm py-2.5" placeholder="Cardiologist" required />
                                 </div>
                             </div>
                             <div>
                                 <label className="block text-xs text-white/40 mb-1.5">Hospital / Clinic</label>
-                                <input value={form.hospital} onChange={e => setForm(p => ({ ...p, hospital: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-primary-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-primary-500/20 text-sm py-2.5" placeholder="Hospital name" required />
+                                <input value={form.hospital} onChange={e => setForm(p => ({ ...p, hospital: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm " placeholder="Hospital name" required />
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-xs text-white/40 mb-1.5">Date</label>
-                                    <input type="date" value={form.date} onChange={e => setForm(p => ({ ...p, date: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-primary-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-primary-500/20 text-sm py-2.5" required />
+                                    <input type="date" value={form.date} onChange={e => setForm(p => ({ ...p, date: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm" required />
                                 </div>
                                 <div>
                                     <label className="block text-xs text-white/40 mb-1.5">Time</label>
-                                    <input type="time" value={form.time} onChange={e => setForm(p => ({ ...p, time: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-primary-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-primary-500/20 text-sm py-2.5" required />
+                                    <input type="time" value={form.time} onChange={e => setForm(p => ({ ...p, time: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm " required />
                                 </div>
                             </div>
                             <div>
                                 <label className="block text-xs text-white/40 mb-1.5">Visit Type</label>
-                                <input value={form.type} onChange={e => setForm(p => ({ ...p, type: e.target.value }))} className=" w-full  bg-[#192638] border border-white/10 focus:border-primary-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-primary-500/20 text-sm py-2.5" placeholder="e.g. Follow-up, Routine Checkup" />
+                                <input value={form.type} onChange={e => setForm(p => ({ ...p, type: e.target.value }))} className=" w-full  bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm " placeholder="e.g. Follow-up, Routine Checkup" />
                             </div>
                             <div className="flex gap-3 pt-2">
-                                <button type="button" onClick={() => setShowForm(false)} className="flex-1 btn-ghost text-sm py-3">Cancel</button>
+                                <button type="button" onClick={() => setShowForm(false)} className="flex-1  bg-white/5 hover:bg-white/10 text-white/80 hover:text-white border border-white/10 hover:border-white/20 font-medium px-5  rounded-xl transition-all duration-200 active:scale-95 text-sm py-3">Cancel</button>
                                 <button type="submit" className="flex-1  bg-cyan-500 hover:bg-cyan-400 text-white font-medium cursor-pointer px-5 py-2.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-cyan-500/20 active:scale-95 text-sm">Book Appointment</button>
                             </div>
                         </form>
@@ -113,10 +113,10 @@ export default function AppointmentsPage() {
             <div className="space-y-3">
                 {appointments.map(apt => {
                     return (
-                        <div key={apt.id} className=' bg-surface-800/60 backdrop-blur-md border border-white/8 rounded-2xl p-5 border hover:border-white/15 transition-all'>
+                        <div key={apt.id} className=' bg-[#1a222d]        backdrop-blur-md border-white/8 rounded-2xl p-5 border hover:border-white/15 transition-all'>
                             <div className="flex items-start gap-4 flex-wrap">
-                                <div className='w-12 h-12 rounded-xl flex items-center justify-center shrink-0'>
-                                    <Stethoscope className='w-5 h-5' />
+                                <div className='w-12 h-12 rounded-xl flex items-center justify-center bg-amber-500/10  shrink-0'>
+                                    <Stethoscope className='text-amber-500 w-5 h-5' />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-start justify-between gap-2">
@@ -124,9 +124,9 @@ export default function AppointmentsPage() {
                                             <h3 className="font-medium text-white">{apt.doctor}</h3>
                                             <p className="text-sm text-white/40">{apt.specialty}</p>
                                         </div>
-                                        <span className='badge border text-xs shrink-0'>
-                                            {apt.status === 'completed' ? <CheckCircle2 className="w-3 h-3" /> : <Clock className="w-3 h-3" />}
-                                           
+                                        <span className=' inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium   shrink-0 bg-amber-500/10 border border-amber-500/80 text-amber-500/90'>
+                                            {apt.status === 'completed' ? <CheckCircle2 className="w-3 h-3" /> : <Clock className="w-3 h-3 " />}
+                                           {apt.status}
                                         </span>
                                     </div>
                                     <div className="flex items-center flex-wrap gap-4 mt-3 text-xs text-white/30">
@@ -134,7 +134,7 @@ export default function AppointmentsPage() {
                                         <span className="flex items-center gap-1.5"><Clock className="w-3 h-3" />{apt.time}</span>
                                         <span className="flex items-center gap-1.5"><MapPin className="w-3 h-3" />{apt.hospital}</span>
                                     </div>
-                                    {apt.type && <div className="mt-2"><span className="badge bg-white/5 text-white/30 text-xs">{apt.type}</span></div>}
+                                    {apt.type && <div className="mt-2"><span className=" inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium  bg-white/5 text-white/30">{apt.type}</span></div>}
                                 </div>
                             </div>
                         </div>
