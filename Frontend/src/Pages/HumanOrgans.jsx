@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const organs = [
     {
         name: "Heart",
-        emoji: "🫀",
+        emoji: "❤️",
         image:
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr4CKReYVLH2lDi3dXloODeujSFpwybL7KDw&s",
         link: 'https://en.wikipedia.org/wiki/Heart',

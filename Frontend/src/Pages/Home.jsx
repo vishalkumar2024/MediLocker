@@ -33,7 +33,7 @@ function Home() {
                 <div className="flex items-center gap-3">
                     <Link to="/login" className=" bg-white/5 hover:bg-white/10 text-white/80 hover:text-white border border-white/10 hover:border-white/20 font-medium px-3 py-1.5 rounded-xl transition-all duration-200 active:scale-95; text-sm sm:px-5 sm:py-2.5">Sign in</Link>
 
-                    <Link to="/register" className=" bg-emerald-500 hover:bg-primary-400 text-white font-medium px-3 py-1.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-primary-500/20 active:scale-95text-sm sm:px-5 sm:py-2.5">Get Started</Link>
+                    <Link to="/body_organs" className=" bg-emerald-500 hover:bg-primary-400 text-white font-medium px-3 py-1.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-primary-500/20 active:scale-95text-sm sm:px-5 sm:py-2.5">Human Organs</Link>
                 </div>
             </nav>
 

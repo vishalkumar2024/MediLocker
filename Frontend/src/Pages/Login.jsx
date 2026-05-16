@@ -36,7 +36,7 @@ function LoginPage() {
                         </div>
                         <span className="font-logo text-xl  text-white">MediLocker</span>
                     </Link>
-                    <h1 className="font-separated text-2xl text-white mb-2">Welcome back</h1>
+                    <h1 className="font-separated text-2xl font-bold text-white mb-2">Welcome back</h1>
                     <p className="text-white/40 text-sm">Sign in to access your health records</p>
                 </div>
 
