@@ -17,7 +17,25 @@ const appointments = [
         time: "10:30 AM",
         hospital: "Apollo Clinic",
         type: "Follow-up",
-    }
+    },
+    {
+        status: "Upcoming",
+        doctor: "Dr. Sunita Rao",
+        specialty: "Pulmonologist",
+        date: "2025-01-28",
+        time: "2:00 PM",
+        hospital: "Max Healthcare",
+        type: "Routine Checkup",
+    },
+    {
+        status: "Completed",
+        doctor: "Dr. Rajesh Kumar",
+        specialty: "General Physician",
+        date: "2024-11-10",
+        time: "11:00 AM",
+        hospital: "RIIMS Ranchi",
+        type: "Blood Test Review",
+    },
 ]
 
 export default function AppointmentsPage() {
@@ -126,7 +144,7 @@ export default function AppointmentsPage() {
                                         </div>
                                         <span className=' inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium   shrink-0 bg-amber-500/10 border border-amber-500/80 text-amber-500/90'>
                                             {apt.status === 'completed' ? <CheckCircle2 className="w-3 h-3" /> : <Clock className="w-3 h-3 " />}
-                                           {apt.status}
+                                            {apt.status}
                                         </span>
                                     </div>
                                     <div className="flex items-center flex-wrap gap-4 mt-3 text-xs text-white/30">
