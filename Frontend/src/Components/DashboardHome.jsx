@@ -58,52 +58,68 @@ function DashboardHome() {
 
     const appointments = [
         {
-            id:1,
-            doctor:"Dr. Alok Mishra",
+            id: 1,
+            status: "upcoming",
+            doctor: "Dr. Alok Mishra",
             specialty: "Cardiologist",
-            date:"2025-01-20",
-            time:"2025-01-20 · 10:30 AM",
+            date: "20-06-2026",
+            time: "10:30 AM",
+            hospital: "Apollo Clinic",
+            type: "Follow-up",
         },
-     
         {
-            id:2,
-            doctor:"Dr. Alok Mishra",
-            specialty: "Cardiologist",
-            date:"2025-01-20",
-            time:"2025-01-20 · 10:30 AM",
+            id: 2,
+            status: "upcoming",
+            doctor: "Dr. Sunita Rao",
+            specialty: "Pulmonologist",
+            date: "13-06-2026",
+            time: "2:00 PM",
+            hospital: "Max Healthcare",
+            type: "Routine Checkup",
         },
-
         {
-            id:3,
-            doctor:"Dr. Sunita Rao",
-            specialty:"Pulmonologist",
-            date:"2025-01-28",
-            time:"2025-01-28 · 2:00 PM",
-        }
-     
+            id: 4,
+            status: "upcoming",
+            doctor: "Dr. Aditya Swarankar",
+            specialty: "Immunologists",
+            date: "10-07-2026",
+            time: "11:00 AM",
+            hospital: "Manipal Hospital",
+            type: "Blood Test Review",
+        }, {
+            id: 3,
+            status: "completed",
+            doctor: "Dr. Rajesh Mehta",
+            specialty: "General Physician",
+            date: "22-04-2026",
+            time: "11:00 AM",
+            hospital: "RIIMS Ranchi",
+            type: "Blood Test Review",
+        },
     ]
+
 
     const mockMedications = [
         {
-            id:1,
-            name:"Amlodipine",
-            dose:"5mg",
-            frequency:"Once daily",
-            time:"Morning",
+            id: 1,
+            name: "Amlodipine",
+            dose: "5mg",
+            frequency: "Once daily",
+            time: "Morning",
         },
         {
-            id:2,
-            name:"Vitamin D3",
-            dose:"60000 IU",
-            frequency:"Weekly",
-            time:"Sunday",
+            id: 2,
+            name: "Vitamin D3",
+            dose: "60000 IU",
+            frequency: "Weekly",
+            time: "Sunday",
         },
         {
-            id:3,
-            name:"Aspirin",
-            dose:"75mg",
-            frequency:"Once daily",
-            time:"Night",
+            id: 3,
+            name: "Aspirin",
+            dose: "75mg",
+            frequency: "Once daily",
+            time: "Night",
         },
     ]
 
@@ -122,7 +138,7 @@ function DashboardHome() {
             </div>
 
             {/* Health Score Banner */}
-            <div className=" bg-[#141a23] backdrop-blur-md border border-white/8 rounded-2xl p-5 bg-gradient-to-r from-cyan-500/10 to-accent-teal/5 border-cyan-500/20 relative overflow-hidden">
+            <div className=" bg-[#141a23] backdrop-blur-md border rounded-2xl p-5 bg-gradient-to-r from-cyan-500/10 to-accent-teal/5 border-cyan-500/20 relative overflow-hidden">
                 <div className="absolute -right-6 -top-6 w-32 h-32 rounded-full bg-cyan-500/5" />
                 <div className="absolute -right-2 top-4 w-20 h-20 rounded-full bg-accent-teal/5" />
                 <div className="relative flex items-center justify-between">
@@ -150,7 +166,7 @@ function DashboardHome() {
                 </div>
                 {/* Progress bar */}
                 <div className="mt-4 h-1.5 bg-white/5 rounded-full overflow-hidden">
-                    <div className="h-full  bg-cyan-500  rounded-full transition-all duration-1000" style={{ width: `${82}%` } }/>
+                    <div className="h-full  bg-cyan-500  rounded-full transition-all duration-1000" style={{ width: `${82}%` }} />
                 </div>
             </div>
 
@@ -248,7 +264,7 @@ function DashboardHome() {
                         <Link to="/dashboard/appointments" className="text-cyan-400 text-xs hover:text-cyan-300">View all</Link>
                     </div>
                     <div className="space-y-3">
-                        {appointments.map(apt => (
+                        {appointments.filter(a => a.status === 'upcoming').map(apt => (
                             <div key={apt.id} className="p-3.5 rounded-xl bg-white/3 border border-white/5 hover:border-white/10 transition-colors">
                                 <div className="flex items-start gap-3">
                                     <div className="w-9 h-9 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">

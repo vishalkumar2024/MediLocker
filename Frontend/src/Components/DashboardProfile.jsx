@@ -103,7 +103,7 @@ function DashboardProfile() {
                         </div>
                         <div className="flex flex-wrap gap-2">
                             {user?.allergies?.map(a => (
-                                <span key={a} className="inline-flex items-center gap-1.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-500 border border-accent-amber/20 px-3 ">
+                                <span key={a} className="inline-flex items-center gap-1.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-500 border border-accent-amber/20 py-1 px-3 ">
                                     {a}
                                 </span>
                             ))}
@@ -118,7 +118,7 @@ function DashboardProfile() {
                         </div>
                         <div className="flex flex-wrap gap-2">
                             {user?.conditions?.map(c => (
-                                <span key={c} className="inline-flex items-center gap-1.5 rounded-full text-xs font-medium bg-rose-500/10 text-rose-500 border border-accent-rose/20 px-3">
+                                <span key={c} className="inline-flex items-center gap-1.5 rounded-full text-xs font-medium bg-rose-500/10 text-rose-500 border border-accent-rose/20 py-1 px-3">
                                     {c}
                                 </span>
                             ))}
