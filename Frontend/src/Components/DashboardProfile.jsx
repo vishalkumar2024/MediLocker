@@ -4,18 +4,18 @@ import { User, Phone, MapPin, Calendar, Droplets, Edit3, Save, X, AlertTriangle,
 
 function DashboardProfile() {
 
-    const user ={
-        name:"Arjun Sharma",
-        email:"arjun@gmail.com",
-        bloodGroup:"B+",
-        gender:"Male",
-        height:"172cm",
-        weight:"72kg",
-        phone:"+91 9876543210",
-        dob:"29-02-1998",
-        address:"Ratu Road, Ranchi",
-        allergies:["Penicillin","dust"],
-        conditions:["Mild Hypertension"],
+    const user = {
+        name: "Arjun Sharma",
+        email: "arjun@gmail.com",
+        bloodGroup: "B+",
+        gender: "Male",
+        height: "172cm",
+        weight: "72kg",
+        phone: "+91 9876543210",
+        dob: "29-02-1998",
+        address: "Ratu Road, Ranchi",
+        allergies: ["Penicillin", "dust"],
+        conditions: ["Mild Hypertension"],
     }
     const [form, setForm] = useState({ ...user })
 
@@ -29,8 +29,6 @@ function DashboardProfile() {
     ]
 
     const initials = user?.name?.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()
-
-
 
     return (
         <div className="space-y-6 max-w-4xl">
@@ -68,10 +66,10 @@ function DashboardProfile() {
                         {fields.map(f => (
                             <div key={f.key}>
                                 <label className="block text-xs text-white/40 mb-1.5 font-medium uppercase tracking-wide">{f.label}</label>
-                                    <div className="flex items-center gap-2.5 text-sm text-white">
-                                        <f.icon className="w-4 h-4 text-white/30 shrink-0" />
-                                        <span>{user?.[f.key] || '—'}</span>
-                                    </div>
+                                <div className="flex items-center gap-2.5 text-sm text-white">
+                                    <f.icon className="w-4 h-4 text-white/30 shrink-0" />
+                                    <span>{user?.[f.key] || '—'}</span>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -124,7 +122,7 @@ function DashboardProfile() {
                                     {c}
                                 </span>
                             ))}
-                           
+
                         </div>
                     </div>
                 </div>

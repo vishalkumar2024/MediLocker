@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Calendar, Clock, MapPin, Plus, CheckCircle2, Stethoscope, X } from 'lucide-react'
 import clsx from 'clsx'
 
@@ -8,9 +8,11 @@ const statusConfig = {
     cancelled: { label: 'Cancelled', color: 'text-accent-rose', bg: 'bg-accent-rose/10', border: 'border-accent-rose/20' },
 }
 
+
+
 const appointments = [
     {
-        status: "Upcoming",
+        status: "upcoming",
         doctor: "Dr. Alok Mishra",
         specialty: "Cardiologist",
         date: "2025-01-20",
@@ -19,7 +21,7 @@ const appointments = [
         type: "Follow-up",
     },
     {
-        status: "Upcoming",
+        status: "upcoming",
         doctor: "Dr. Sunita Rao",
         specialty: "Pulmonologist",
         date: "2025-01-28",
@@ -28,8 +30,8 @@ const appointments = [
         type: "Routine Checkup",
     },
     {
-        status: "Completed",
-        doctor: "Dr. Rajesh Kumar",
+        status: "completed",
+        doctor: "Dr. Rajesh Mehta",
         specialty: "General Physician",
         date: "2024-11-10",
         time: "11:00 AM",
@@ -38,7 +40,30 @@ const appointments = [
     },
 ]
 
-export default function AppointmentsPage() {
+function AppointmentsPage() {
+
+    const [countUpcoming, setCountUpcoming] = useState(0);
+    const [countCompleted, setCountCompleted] = useState(0);
+
+    useEffect(() => {
+
+        let upcomingCount = 0;
+        let completedCount = 0;
+        appointments.forEach((item) => {
+
+            if (item.status == "upcoming") {
+                upcomingCount++;
+            } else {
+                completedCount++;
+            }
+
+        });
+
+        setCountUpcoming(upcomingCount);
+        setCountCompleted(completedCount);
+
+    }, [appointments]);
+
     const [filter, setFilter] = useState('all')
     const [showForm, setShowForm] = useState(false)
     const [form, setForm] = useState({ doctor: '', specialty: '', hospital: '', date: '', time: '', type: '' })
@@ -60,7 +85,7 @@ export default function AppointmentsPage() {
             <div className="flex items-center justify-between flex-wrap gap-3">
                 <div>
                     <h1 className="font-display text-2xl font-bold text-white">Appointments</h1>
-                    <p className="text-white/40 text-sm mt-1">{appointments.filter(a => a.status === 'upcoming').length} upcoming visits</p>
+                    <p className="text-white/40 text-sm mt-1">{countUpcoming} upcoming visits</p>
                 </div>
                 <button onClick={() => setShowForm(true)} className=" bg-cyan-500 hover:bg-cyan-400 text-white font-medium px-5 py-2.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-cyan-500/20 active:scale-95 text-sm flex items-center gap-2">
                     <Plus className="w-4 h-4" /> Book Appointment
@@ -129,12 +154,12 @@ export default function AppointmentsPage() {
 
             {/* Timeline */}
             <div className="space-y-3">
-                {appointments.map(apt => {
+                {filtered.map(apt => {
                     return (
                         <div key={apt.id} className=' bg-[#1a222d]        backdrop-blur-md border-white/8 rounded-2xl p-5 border hover:border-white/15 transition-all'>
                             <div className="flex items-start gap-4 flex-wrap">
-                                <div className='w-12 h-12 rounded-xl flex items-center justify-center bg-amber-500/10  shrink-0'>
-                                    <Stethoscope className='text-amber-500 w-5 h-5' />
+                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-amber-500/10  shrink-0 ${(apt.status == "upcoming") ? " bg-amber-500/10  " : " bg-cyan-500/10 "}`}>
+                                    <Stethoscope className={` w-5 h-5 ${(apt.status == "upcoming") ? " text-amber-500  " : " text-cyan-500 "}  `} />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-start justify-between gap-2">
@@ -142,7 +167,7 @@ export default function AppointmentsPage() {
                                             <h3 className="font-medium text-white">{apt.doctor}</h3>
                                             <p className="text-sm text-white/40">{apt.specialty}</p>
                                         </div>
-                                        <span className=' inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium   shrink-0 bg-amber-500/10 border border-amber-500/80 text-amber-500/90'>
+                                        <span className={` inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium   shrink-0 ${(apt.status == "upcoming") ? "bg-amber-500/10 border border-amber-500/80 text-amber-500/90" : "bg-cyan-500/10 border border-cyan-500/80 text-cyan-500/90"}  `}>
                                             {apt.status === 'completed' ? <CheckCircle2 className="w-3 h-3" /> : <Clock className="w-3 h-3 " />}
                                             {apt.status}
                                         </span>
@@ -160,12 +185,16 @@ export default function AppointmentsPage() {
                 })}
             </div>
 
-            {filtered.length === 0 && (
-                <div className="text-center py-16 text-white/20">
-                    <Calendar className="w-10 h-10 mx-auto mb-3" />
-                    <p>No appointments found</p>
-                </div>
-            )}
-        </div>
+            {
+                filtered.length === 0 && (
+                    <div className="text-center py-16 text-white/20">
+                        <Calendar className="w-10 h-10 mx-auto mb-3" />
+                        <p>No appointments found</p>
+                    </div>
+                )
+            }
+        </div >
     )
 }
+
+export default AppointmentsPage
