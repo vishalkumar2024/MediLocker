@@ -10,10 +10,10 @@ import DashboardBloodReport from './Components/DashboardBloodReport'
 import DashboardOrganHealth from './Components/DashboardOrganHealth'
 import HumanOrgans from './Pages/HumanOrgans'
 import DashboardAppointment from './Components/DashboardAppointment'
+import DashboardMedication from './Components/DashboardMedication'
 
 
 function App() {
-
   return (
     <>
       <Routes>
@@ -27,6 +27,7 @@ function App() {
           <Route path='blood-report' element={<DashboardBloodReport />}></Route>
           <Route path="organs" element={<DashboardOrganHealth />}></Route>
           <Route path="appointments" element={<DashboardAppointment />}></Route>
+          <Route path="medications" element={<DashboardMedication />}></Route>
         </Route>
       </Routes>
     </>
