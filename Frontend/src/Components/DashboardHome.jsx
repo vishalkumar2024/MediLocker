@@ -94,29 +94,44 @@ function DashboardHome() {
     ]
 
 
-    const mockMedications = [
-        {
-            id: 1,
-            name: "Amlodipine",
-            dose: "5mg",
-            frequency: "Once daily",
-            time: "Morning",
-        },
-        {
-            id: 2,
-            name: "Vitamin D3",
-            dose: "60000 IU",
-            frequency: "Weekly",
-            time: "Sunday",
-        },
-        {
-            id: 3,
-            name: "Aspirin",
-            dose: "75mg",
-            frequency: "Once daily",
-            time: "Night",
-        },
-    ]
+    const Medications = [
+    {
+        id: 1,
+        name: "Amlodipine ",
+        dose: "5mg",
+        for: "Hypertension",
+        time: "Morning",
+    },
+    {
+        id: 2,
+        name: "Vitamin D3 ",
+        dose: "60000 IU",
+        for: "Vitamin D deficiency",
+        time: "Sunday",
+    },
+    {
+        id: 3,
+        name: "Aspirin",
+        dose: "75mg",
+        for: "Prevention",
+        time: "Night",
+    },
+    {
+        id: 4,
+        name: "Levocetirizine",
+        dose: "5mg",
+        for: "Allergy",
+        time: "Afternoon",
+    },
+    {
+        id: 5,
+        name: "Pantoprazole",
+        dose: "40mg",
+        for: "Acidity",
+        time: "Morning",
+    },
+
+]
 
     return (
         <div className="space-y-7">
@@ -209,7 +224,7 @@ function DashboardHome() {
                         <Link to="/dashboard/medications" className="text-cyan-400 text-xs hover:text-cyan-300">View all</Link>
                     </div>
                     <div className="space-y-2">
-                        {mockMedications.map(med => (
+                        {Medications.filter(a => a.id <= 4).map(med => (
                             <div key={med.id} className=" bg-white/3 border border-white/5 hover:border-white/30  mb-4 flex items-center gap-3 p-3 rounded-xl hover:bg-white/3 transition-colors cursor-pointer">
                                 <div className="w-9 h-9 rounded-xl bg-violet-500/10 flex items-center justify-center shrink-0">
                                     <Pill className="w-4 h-4 text-violet-400" />
@@ -225,9 +240,7 @@ function DashboardHome() {
                 </div>
             </div>
 
-            {/* Chart + Recent */}
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
-
                 {/* Upcoming appointments */}
                 <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-5 lg:col-span-2">
                     <div className="flex items-center justify-between mb-4">
