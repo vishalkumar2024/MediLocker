@@ -138,7 +138,7 @@ function DashboardHome() {
             </div>
 
             {/* Health Score Banner */}
-            <div className=" bg-[#141a23] backdrop-blur-md border rounded-2xl p-5 bg-gradient-to-r from-cyan-500/10 to-accent-teal/5 border-cyan-500/20 relative overflow-hidden">
+            <div className=" bg-[#141a23] backdrop-blur-md border rounded-2xl p-5  border-cyan-500/20 relative overflow-hidden">
                 <div className="absolute -right-6 -top-6 w-32 h-32 rounded-full bg-cyan-500/5" />
                 <div className="absolute -right-2 top-4 w-20 h-20 rounded-full bg-accent-teal/5" />
                 <div className="relative flex items-center justify-between">

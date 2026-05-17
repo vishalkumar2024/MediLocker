@@ -2,14 +2,6 @@ import { useState, useEffect } from 'react'
 import { Calendar, Clock, MapPin, Plus, CheckCircle2, Stethoscope, X } from 'lucide-react'
 import clsx from 'clsx'
 
-const statusConfig = {
-    upcoming: { label: 'Upcoming', color: 'text-accent-amber', bg: 'bg-accent-amber/10', border: 'border-accent-amber/20' },
-    completed: { label: 'Completed', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20' },
-    cancelled: { label: 'Cancelled', color: 'text-accent-rose', bg: 'bg-accent-rose/10', border: 'border-accent-rose/20' },
-}
-
-
-
 const appointments = [
     {
         id: 1,
@@ -54,6 +46,37 @@ const appointments = [
 
 function AppointmentsPage() {
 
+    const [filter, setFilter] = useState('all')
+    const [showForm, setShowForm] = useState(false)
+    const [newAppointment, setNewAppointment] = useState(appointments)
+    const [form, setForm] = useState({ doctor: '', specialty: '', hospital: '', date: '', time: '', type: '' })
+
+    const filtered = filter === 'all' ? newAppointment : newAppointment.filter(a => a.status === filter)
+
+    const addAppointment = (e) => {
+        e.preventDefault()
+
+        setNewAppointment(prev => [
+            {
+                id: `apt_${Date.now()}`,
+                ...form,
+                status: 'upcoming'
+            },
+            ...prev,
+        ])
+
+        setShowForm(false)
+
+        setForm({
+            doctor: '',
+            specialty: '',
+            hospital: '',
+            date: '',
+            time: '',
+            type: ''
+        })
+    }
+
     const [countUpcoming, setCountUpcoming] = useState(0);
     const [countCompleted, setCountCompleted] = useState(0);
 
@@ -61,7 +84,7 @@ function AppointmentsPage() {
 
         let upcomingCount = 0;
         let completedCount = 0;
-        appointments.forEach((item) => {
+        newAppointment.forEach((item) => {
 
             if (item.status == "upcoming") {
                 upcomingCount++;
@@ -74,23 +97,8 @@ function AppointmentsPage() {
         setCountUpcoming(upcomingCount);
         setCountCompleted(completedCount);
 
-    }, [appointments]);
+    }, [newAppointment]);
 
-    const [filter, setFilter] = useState('all')
-    const [showForm, setShowForm] = useState(false)
-    const [form, setForm] = useState({ doctor: '', specialty: '', hospital: '', date: '', time: '', type: '' })
-
-    const filtered = filter === 'all' ? appointments : appointments.filter(a => a.status === filter)
-
-    const addAppointment = (e) => {
-        e.preventDefault()
-        setAppointments(prev => [
-            { id: `apt_${Date.now()}`, ...form, status: 'upcoming' },
-            ...prev,
-        ])
-        setShowForm(false)
-        setForm({ doctor: '', specialty: '', hospital: '', date: '', time: '', type: '' })
-    }
 
     return (
         <div className="space-y-6">
@@ -99,7 +107,7 @@ function AppointmentsPage() {
                     <h1 className="font-display text-2xl font-bold text-white">Appointments</h1>
                     <p className="text-white/40 text-sm mt-1">{countUpcoming} upcoming visits</p>
                 </div>
-                <button onClick={() => setShowForm(true)} className=" bg-cyan-500 hover:bg-cyan-400 text-white font-medium px-5 py-2.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-cyan-500/20 active:scale-95 text-sm flex items-center gap-2">
+                <button onClick={() => setShowForm(true)} className=" bg-cyan-500 hover:bg-cyan-400 text-white font-medium px-5 py-2.5 rounded-xl transition-all duration-200 cursor-pointer hover:shadow-lg hover:shadow-cyan-500/20 active:scale-95 text-sm flex items-center gap-2">
                     <Plus className="w-4 h-4" /> Book Appointment
                 </button>
             </div>
