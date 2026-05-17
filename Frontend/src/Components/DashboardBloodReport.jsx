@@ -1,15 +1,7 @@
-// import { mockBloodReport, mockVitals } from '@/data/mockData'
 import { Droplets, TrendingUp, TrendingDown, Minus, Info } from 'lucide-react'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, LineChart, Line } from 'recharts'
 import clsx from 'clsx'
 import { useState, useEffect } from 'react'
-
-const statusConfig = {
-    normal: { label: 'Normal', color: 'text-primary-400', bg: 'bg-primary-500/10', border: 'border-primary-500/20' },
-    warning: { label: 'Watch', color: 'text-accent-amber', bg: 'bg-accent-amber/10', border: 'border-accent-amber/20' },
-    high: { label: 'High', color: 'text-accent-rose', bg: 'bg-accent-rose/10', border: 'border-accent-rose/20' },
-    low: { label: 'Low', color: 'text-accent-cyan', bg: 'bg-accent-cyan/10', border: 'border-accent-cyan/20' },
-}
 
 const labels = {
     hemoglobin: 'Hemoglobin', rbc: 'RBC', wbc: 'WBC', platelets: 'Platelets',

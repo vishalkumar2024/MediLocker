@@ -5,12 +5,6 @@ import { Link } from 'react-router-dom'
 import bodyImage from '../assets/body.png'
 
 
-const statusConfig = {
-    healthy: { label: 'Healthy', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', dot: 'bg-cyan-400', icon: CheckCircle2 },
-    warning: { label: 'Needs Attention', color: 'text-accent-amber', bg: 'bg-accent-amber/10', border: 'border-accent-amber/20', dot: 'bg-accent-amber', icon: AlertTriangle },
-    critical: { label: 'Critical', color: 'text-accent-rose', bg: 'bg-accent-rose/10', border: 'border-accent-rose/20', dot: 'bg-accent-rose', icon: AlertTriangle },
-}
-
 const organHealth = [
     {
         status: "Healthy",

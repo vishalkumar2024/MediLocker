@@ -1,15 +1,10 @@
-// import { useAuth } from '@/context/AuthContext'
-// import { mockStats, mockVitals, mockDocuments, mockAppointments, mockMedications } from '@/data/mockData'
 import { FileText, Calendar, Pill, Activity, TrendingUp, Clock, ChevronRight, Shield } from 'lucide-react'
-// import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts'
 import { Link } from 'react-router-dom'
 import clsx from 'clsx'
 
 
 function DashboardHome() {
 
-    // const { user } = useAuth()
-    // const firstName = user?.name?.split(' ')[0]
     const firstName = "Arjun"
     const hour = new Date().getHours()
     const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening'
@@ -157,7 +152,6 @@ function DashboardHome() {
                         <div className="w-20 h-20 rounded-full border-4 border-cyan-500/30 flex items-center justify-center relative">
                             <div
                                 className="absolute inset-0 rounded-full border-4 border-cyan-500"
-                            // style={{ clipPath: `inset(${100 - mockStats.healthScore}% 0 0 0)` }}
                             />
                             <span className="font-display text-xl font-bold text-cyan-400">B+</span>
                         </div>
@@ -233,29 +227,6 @@ function DashboardHome() {
 
             {/* Chart + Recent */}
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
-                {/* Vitals Chart */}
-                {/* <div className="glass-card p-5 lg:col-span-3">
-                    <div className="flex items-center justify-between mb-5">
-                        <div>
-                            <h2 className="section-title">Vitals Overview</h2>
-                            <p className="text-white/30 text-xs mt-0.5">Last 7 months</p>
-                        </div>
-                        <div className="flex gap-3 text-xs">
-                            <span className="flex items-center gap-1.5 text-white/40"><span className="w-2 h-2 rounded-full bg-cyan-400" />BP</span>
-                            <span className="flex items-center gap-1.5 text-white/40"><span className="w-2 h-2 rounded-full bg-accent-cyan" />Sugar</span>
-                        </div>
-                    </div>
-                    <ResponsiveContainer width="100%" height={200}>
-                        <LineChart data={mockVitals}>
-                            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
-                            <XAxis dataKey="date" tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 11 }} axisLine={false} tickLine={false} />
-                            <YAxis tick={{ fill: 'rgba(255,255,255,0.3)', fontSize: 11 }} axisLine={false} tickLine={false} />
-                            <Tooltip content={<CustomTooltip />} />
-                            <Line type="monotone" dataKey="bp" name="BP" stroke="#45b595" strokeWidth={2} dot={false} />
-                            <Line type="monotone" dataKey="sugar" name="Sugar" stroke="#06b6d4" strokeWidth={2} dot={false} />
-                        </LineChart>
-                    </ResponsiveContainer>
-                </div> */}
 
                 {/* Upcoming appointments */}
                 <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-5 lg:col-span-2">
@@ -284,8 +255,6 @@ function DashboardHome() {
                     </div>
                 </div>
             </div>
-
-
         </div>
     )
 }
