@@ -13,9 +13,9 @@ function DashboardHome() {
 
         { label: 'Documents', value: 6, icon: FileText, color: 'text-accent-cyan', bg: 'bg-accent-cyan/10', link: '/dashboard/documents' },
 
-        { label: 'Medications', value: 3, icon: Pill, color: 'text-accent-violet', bg: 'bg-accent-violet/10', link: '/dashboard/medications' },
+        { label: 'Medications', value: 5, icon: Pill, color: 'text-accent-violet', bg: 'bg-accent-violet/10', link: '/dashboard/medications' },
 
-        { label: 'Upcoming Visits', value: 2, icon: Calendar, color: 'text-accent-amber', bg: 'bg-accent-amber/10', link: '/dashboard/appointments' },
+        { label: 'Upcoming Visits', value: 3, icon: Calendar, color: 'text-accent-amber', bg: 'bg-accent-amber/10', link: '/dashboard/appointments' },
 
         { label: 'Health Score', value: `${82}%`, icon: Activity, color: 'text-cyan-400', bg: 'bg-cyan-500/10', link: '/dashboard/organs' },
     ]

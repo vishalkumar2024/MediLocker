@@ -14,7 +14,6 @@ const navItems = [
     { to: '/dashboard/organs', label: 'Organ Health', icon: Activity },
     { to: '/dashboard/appointments', label: 'Appointments', icon: Calendar },
     { to: '/dashboard/medications', label: 'Medications', icon: Pill },
-    { to: '/dashboard/share', label: 'Share Records', icon: Share2 },
 ]
 
 function Dashboard() {
@@ -26,16 +25,10 @@ function Dashboard() {
         navigate('/')
     }
 
-    // const initials = user?.name?.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'MV'
     const initials = 'MV'
 
     return (
         <div className="min-h-screen bg-[#0d1117] flex">
-
-            {/* Mobile overlay */}
-            {/* {sidebarOpen && (
-        <div className="fixed inset-0 bg-black/60 z-20 lg:hidden" onClick={() => setSidebarOpen(false)} />
-      )} */}
 
             {/* Sidebar */}
             <aside className={clsx(
@@ -75,7 +68,7 @@ function Dashboard() {
                 {/* User card */}
                 <div className="p-3 border-t border-white/5">
                     <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-3.5 flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-500 to-accent-teal flex items-center justify-center text-sm font-bold text-white shrink-0">
+                        <div className="w-9 h-9 rounded-full  bg-cyan-500  flex items-center justify-center text-sm font-bold text-white shrink-0">
                             {initials}
                         </div>
                         <div className="flex-1 min-w-0">
