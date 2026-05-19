@@ -182,7 +182,7 @@ function DashboardDocument() {
                                 <p className="font-medium text-white text-sm  mb-1 truncate">{doc.name}</p>
                                 <p className="text-xs text-white/40">{doc.hospital} · {doc.doctor}</p>
                                 <div className="flex items-center gap-2 mt-2.5 flex-wrap">
-                                    <span className={clsx(' inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border text-xs', typeColors[doc.type] || 'bg-white/5 text-white/40')}>{doc.type}</span>
+                                    <span className={clsx(' inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border', typeColors[doc.type] || 'bg-white/5 text-white/40')}>{doc.type}</span>
                                     <span className="text-xs text-white/25">{doc.date}</span>
                                     <span className="text-xs text-white/25">{doc.size}</span>
                                 </div>
