@@ -1,6 +1,12 @@
 import { FileText, Calendar, Pill, Activity, TrendingUp, Clock, ChevronRight, Shield } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import clsx from 'clsx'
+import appointments from './assets/Appointments'
+import features from './assets/features'
+import Medications from './assets/Medications'
+import AllDocument from './assets/AllDocument'
+import statCards from './assets/statCards'
+
 
 
 function DashboardHome() {
@@ -8,130 +14,6 @@ function DashboardHome() {
     const firstName = "Arjun"
     const hour = new Date().getHours()
     const greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening'
-
-    const statCards = [
-
-        { label: 'Documents', value: 6, icon: FileText, color: 'text-accent-cyan', bg: 'bg-accent-cyan/10', link: '/dashboard/documents' },
-
-        { label: 'Medications', value: 5, icon: Pill, color: 'text-accent-violet', bg: 'bg-accent-violet/10', link: '/dashboard/medications' },
-
-        { label: 'Upcoming Visits', value: 3, icon: Calendar, color: 'text-accent-amber', bg: 'bg-accent-amber/10', link: '/dashboard/appointments' },
-
-        { label: 'Health Score', value: `${82}%`, icon: Activity, color: 'text-cyan-400', bg: 'bg-cyan-500/10', link: '/dashboard/organs' },
-    ]
-
-    const recentDocument = [
-        {
-            id: 1,
-            name: "Blood Test Report — Nov 2024",
-            date: "2024-11-10",
-            size: "2.4 MB",
-            format: "PDF"
-        },
-        {
-            id: 2,
-            name: "Chest X-Ray",
-            date: "2024-10-22",
-            size: "5.1 MB",
-            format: "DICOM"
-        },
-        {
-            id: 3,
-            name: "Prescription — Hypertension",
-            date: "2024-09-30",
-            size: "0.8 MB",
-            format: "PDF"
-        },
-        {
-            id: 4,
-            name: "ECG Report",
-            date: "2024-08-15",
-            size: "1.2 MB",
-            format: "PDF"
-        }
-    ];
-
-    const appointments = [
-        {
-            id: 1,
-            status: "upcoming",
-            doctor: "Dr. Alok Mishra",
-            specialty: "Cardiologist",
-            date: "20-06-2026",
-            time: "10:30 AM",
-            hospital: "Apollo Clinic",
-            type: "Follow-up",
-        },
-        {
-            id: 2,
-            status: "upcoming",
-            doctor: "Dr. Sunita Rao",
-            specialty: "Pulmonologist",
-            date: "13-06-2026",
-            time: "2:00 PM",
-            hospital: "Max Healthcare",
-            type: "Routine Checkup",
-        },
-        {
-            id: 4,
-            status: "upcoming",
-            doctor: "Dr. Aditya Swarankar",
-            specialty: "Immunologists",
-            date: "10-07-2026",
-            time: "11:00 AM",
-            hospital: "Manipal Hospital",
-            type: "Blood Test Review",
-        }, {
-            id: 3,
-            status: "completed",
-            doctor: "Dr. Rajesh Mehta",
-            specialty: "General Physician",
-            date: "22-04-2026",
-            time: "11:00 AM",
-            hospital: "RIIMS Ranchi",
-            type: "Blood Test Review",
-        },
-    ]
-
-
-    const Medications = [
-    {
-        id: 1,
-        name: "Amlodipine ",
-        dose: "5mg",
-        for: "Hypertension",
-        time: "Morning",
-    },
-    {
-        id: 2,
-        name: "Vitamin D3 ",
-        dose: "60000 IU",
-        for: "Vitamin D deficiency",
-        time: "Sunday",
-    },
-    {
-        id: 3,
-        name: "Aspirin",
-        dose: "75mg",
-        for: "Prevention",
-        time: "Night",
-    },
-    {
-        id: 4,
-        name: "Levocetirizine",
-        dose: "5mg",
-        for: "Allergy",
-        time: "Afternoon",
-    },
-    {
-        id: 5,
-        name: "Pantoprazole",
-        dose: "40mg",
-        for: "Acidity",
-        time: "Morning",
-    },
-
-]
 
     return (
         <div className="space-y-7">
@@ -202,7 +84,7 @@ function DashboardHome() {
                         <Link to="/dashboard/documents" className="text-cyan-400 text-xs hover:text-cyan-300">View all</Link>
                     </div>
                     <div className="space-y-2 ">
-                        {recentDocument.map(doc => (
+                        {AllDocument.map(doc => (
                             <div key={doc.id} className=" bg-white/3 border border-white/5 hover:border-white/30 transition-colors flex items-center gap-3 p-3 rounded-xl hover:bg-white/3 mb-4  cursor-pointer group">
                                 <div className="w-9 h-9 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
                                     <FileText className="w-4 h-4 text-cyan-400" />

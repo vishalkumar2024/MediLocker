@@ -24,7 +24,7 @@ const appointments = [
         type: "Routine Checkup",
     },
     {
-        id: 4,
+        id: 3,
         status: "upcoming",
         doctor: "Dr. Aditya Swarankar",
         specialty: "Immunologists",
@@ -33,7 +33,7 @@ const appointments = [
         hospital: "Manipal Hospital",
         type: "Blood Test Review",
     }, {
-        id: 3,
+        id: 4,
         status: "completed",
         doctor: "Dr. Rajesh Mehta",
         specialty: "General Physician",
