@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import logo from '../assets/Logo.jpg'
-import { Shield, Upload, Share2, Activity, Lock, ArrowRight, CheckCircle2, Zap, Heart, ChevronRight } from 'lucide-react'
+import { Shield, Upload, Share2, Activity, Lock, ArrowRight, CheckCircle2, Zap,  ChevronRight } from 'lucide-react'
 import Footer from '../Components/Footer.jsx'
 
 const features = [

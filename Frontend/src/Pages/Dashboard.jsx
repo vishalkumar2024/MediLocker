@@ -3,7 +3,7 @@ import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import logo from '../assets/Logo.jpg'
 import {
     LayoutDashboard, User, FileText, Droplets, Activity, Calendar,
-    Pill, Share2, Heart, LogOut, Menu, X, Bell, ChevronRight
+    Pill, Share2,  LogOut, Menu, X, Bell, ChevronRight
 } from 'lucide-react'
 import clsx from 'clsx'
 
