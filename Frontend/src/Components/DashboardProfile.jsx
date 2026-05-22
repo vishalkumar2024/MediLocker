@@ -17,7 +17,6 @@ function DashboardProfile() {
         allergies: ["Penicillin", "dust"],
         conditions: ["Mild Hypertension"],
     }
-    const [form, setForm] = useState({ ...user })
 
     const fields = [
         { label: 'Full Name', key: 'name', icon: User },
@@ -41,7 +40,7 @@ function DashboardProfile() {
 
             {/* Avatar + summary */}
             <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-6 flex items-center gap-5">
-                <div className="w-20 h-20 rounded-2xl  bg-cyan-500  flex items-center justify-center text-3xl font-bold font-display text-white shrink-0">
+                <div className="w-20 h-20 rounded-2xl  bg-cyan-500  flex items-center justify-center text-3xl font-bold font-display text-white">
                     {initials}
                 </div>
                 <div>
@@ -52,7 +51,9 @@ function DashboardProfile() {
                             <Droplets className="w-3 h-3" /> {user?.bloodGroup}
                         </span>
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-white/5 text-white/50">{user?.gender}</span>
+
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-white/5 text-white/50">{user?.height}</span>
+
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-white/5 text-white/50">{user?.weight}</span>
                     </div>
                 </div>
@@ -62,7 +63,7 @@ function DashboardProfile() {
                 {/* Personal Info */}
                 <div className=" bg-[#1a222d] backdrop-blur-md border border-white/8 rounded-2xl p-7">
                     <h2 className="text-xl font-semibold text-white mb-4">Personal Information</h2>
-                    <div className="space-y-6">
+                    <div className="space-y-6 ">
                         {fields.map(f => (
                             <div key={f.key}>
                                 <label className="block text-xs text-white/40 mb-1.5 font-medium uppercase tracking-wide">{f.label}</label>
@@ -89,7 +90,7 @@ function DashboardProfile() {
                             ].map(v => (
                                 <div key={v.label} className="bg-white/3 rounded-xl p-3.5 border border-white/5">
                                     <p className="text-xs text-white/40 mb-1">{v.label}</p>
-                                    <p className={`font-display font-bold text-lg ${v.color}`}>{v.value}</p>
+                                    <p className={` font-bold text-lg ${v.color}`}>{v.value}</p>
                                 </div>
                             ))}
                         </div>
@@ -103,7 +104,7 @@ function DashboardProfile() {
                         </div>
                         <div className="flex flex-wrap gap-2">
                             {user?.allergies?.map(a => (
-                                <span key={a} className="inline-flex items-center gap-1.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-500 border border-accent-amber/20 py-1 px-3 ">
+                                <span key={a} className="inline-flex items-center gap-1.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-500 border border-amber-500/20 py-1 px-3 ">
                                     {a}
                                 </span>
                             ))}
@@ -118,7 +119,7 @@ function DashboardProfile() {
                         </div>
                         <div className="flex flex-wrap gap-2">
                             {user?.conditions?.map(c => (
-                                <span key={c} className="inline-flex items-center gap-1.5 rounded-full text-xs font-medium bg-rose-500/10 text-rose-500 border border-accent-rose/20 py-1 px-3">
+                                <span key={c} className="inline-flex items-center gap-1.5 rounded-full text-xs font-medium bg-rose-500/10 text-rose-500 border border-rose-500/20 py-1 px-3">
                                     {c}
                                 </span>
                             ))}
