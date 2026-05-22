@@ -26,7 +26,7 @@ function Dashboard() {
         navigate('/')
     }
 
-    const initials = 'MV'
+    const initials = 'AS'
 
     return (
         <div className="min-h-screen bg-[#0d1117] flex">
