@@ -1,5 +1,5 @@
 {
-  "name": "package.json",
+  "name": "medilocker",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -7,5 +7,9 @@
   },
   "author": "Vishal Kumar Soni",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.6.2"
+  }
 }
