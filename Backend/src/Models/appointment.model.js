@@ -10,18 +10,17 @@ const appointmentSchema = new mongoose.Schema(
         status: {
             type: String,
             enum: ["upcoming", "completed"],
-            default: "Pending",
         },
 
         doctor: String,
 
         speciality: String,
 
-        date: Date,
+        hospital: String,
+
+        date: String,
 
         time: String,
-
-        hospital: String,
 
         type: String,
     },
@@ -30,4 +29,4 @@ const appointmentSchema = new mongoose.Schema(
     }
 );
 
-export default mongoose.model("Appointment", appointmentSchema);
+export const appointmentModel = mongoose.model("Appointment", appointmentSchema);

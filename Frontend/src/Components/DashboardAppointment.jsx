@@ -83,34 +83,82 @@ function AppointmentsPage() {
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-xs text-white/40 mb-1.5">Doctor Name</label>
-                                    <input value={form.doctor} onChange={e => setForm(p => ({ ...p, doctor: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm py-2.5" placeholder="Dr. Name" required />
+                                    <input
+                                        value={form.doctor}
+                                        onChange={e => setForm(p => ({
+                                            ...p,
+                                            doctor: e.target.value
+                                        }))}
+                                        className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm py-2.5"
+                                        placeholder="Dr. Name"
+                                        required
+                                    />
                                 </div>
                                 <div>
                                     <label className="block text-xs text-white/40 mb-1.5">Specialty</label>
-                                    <input value={form.specialty} onChange={e => setForm(p => ({ ...p, specialty: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm py-2.5" placeholder="Cardiologist" required />
+                                    <input
+                                        value={form.specialty}
+                                        onChange={e => setForm(p => ({ ...p, specialty: e.target.value }))}
+                                        className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm py-2.5"
+                                        placeholder="Cardiologist"
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div>
                                 <label className="block text-xs text-white/40 mb-1.5">Hospital / Clinic</label>
-                                <input value={form.hospital} onChange={e => setForm(p => ({ ...p, hospital: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm " placeholder="Hospital name" required />
+                                <input
+                                    value={form.hospital}
+                                    onChange={e => setForm(p => ({ ...p, hospital: e.target.value }))}
+                                    className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm "
+                                    placeholder="Hospital name"
+                                    required
+                                />
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-xs text-white/40 mb-1.5">Date</label>
-                                    <input type="date" value={form.date} onChange={e => setForm(p => ({ ...p, date: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm" required />
+                                    <input
+                                        type="date"
+                                        value={form.date}
+                                        onChange={e => setForm(p => ({ ...p, date: e.target.value }))}
+
+                                        className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm"
+                                        required
+                                    />
                                 </div>
                                 <div>
                                     <label className="block text-xs text-white/40 mb-1.5">Time</label>
-                                    <input type="time" value={form.time} onChange={e => setForm(p => ({ ...p, time: e.target.value }))} className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm " required />
+                                    <input
+                                        type="time"
+                                        value={form.time}
+                                        onChange={e => setForm(p => ({ ...p, time: e.target.value }))}
+                                        className=" w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm "
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div>
                                 <label className="block text-xs text-white/40 mb-1.5">Visit Type</label>
-                                <input value={form.type} onChange={e => setForm(p => ({ ...p, type: e.target.value }))} className=" w-full  bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm " placeholder="e.g. Follow-up, Routine Checkup" />
+                                <input
+                                    value={form.type}
+                                    onChange={e => setForm(p => ({ ...p, type: e.target.value }))}
+                                    className=" w-full  bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm "
+                                    placeholder="e.g. Follow-up, Routine Checkup"
+                                    required
+                                />
                             </div>
                             <div className="flex gap-3 pt-2">
-                                <button type="button" onClick={() => setShowForm(false)} className="flex-1  bg-white/5 hover:bg-white/10 text-white/80 hover:text-white border border-white/10 hover:border-white/20 font-medium px-5  rounded-xl transition-all duration-200 active:scale-95 text-sm py-3">Cancel</button>
-                                <button type="submit" className="flex-1  bg-cyan-500 hover:bg-cyan-400 text-white font-medium cursor-pointer px-5 py-2.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-cyan-500/20 active:scale-95 text-sm">Book Appointment</button>
+                                <button
+                                    type="button"
+                                    onClick={() => setShowForm(false)}
+                                    className="flex-1  bg-white/5 hover:bg-white/10 text-white/80 hover:text-white border border-white/10 hover:border-white/20 font-medium px-5  rounded-xl transition-all duration-200 active:scale-95 text-sm py-3">Cancel
+                                </button>
+
+                                <button
+                                    type="submit"
+                                    className="flex-1  bg-cyan-500 hover:bg-cyan-400 text-white font-medium cursor-pointer px-5 py-2.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-cyan-500/20 active:scale-95 text-sm">Book Appointment
+                                </button>
                             </div>
                         </form>
                     </div>

@@ -1,4 +1,4 @@
-import medicationModel from "../Models/medication.model.js";
+import {medicationModel} from "../Models/medication.model.js";
 import { UserModel } from "../Models/user.model.js";
 
 
