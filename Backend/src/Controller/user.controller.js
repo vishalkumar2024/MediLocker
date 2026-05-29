@@ -85,7 +85,7 @@ const register = async (req, res) => {
 
     const {userName, email, password, phone, dob, gender, bloodGroup } = req.body; //1
 
-    // try {
+    try {
     const existedUser = await UserModel.findOne({ email }) //2
     if (existedUser) {
         return res.status(400).json({
@@ -93,11 +93,6 @@ const register = async (req, res) => {
             message: "User already exist with this email ",
         })
     }
-
-    // let cart = {}; //3
-    // for (let i = 0; i < 200; i++) {
-    //     cart[i] = 0;
-    // }
 
     const user = await UserModel.create({ //4
         email,
@@ -140,13 +135,13 @@ const register = async (req, res) => {
         user: createdUser
     })
 
-    // } catch (error) {
+    } catch (error) {
         return res.status(500).json({
             error: error,
             success: false,
             message: "Something went wrong while registering user",
         })
-    // }
+    }
 }
 
 // Function to logout a user
