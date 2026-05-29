@@ -67,6 +67,7 @@ const login = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             success: false,
+            error:error.message,
             message: "user could not be logged in",
         })
     }
@@ -137,7 +138,7 @@ const register = async (req, res) => {
 
     } catch (error) {
         return res.status(500).json({
-            error: error,
+            error: error.message,
             success: false,
             message: "Something went wrong while registering user",
         })
@@ -155,6 +156,7 @@ const logout = async (req, res) => {
     } catch (error) {
         return res.status(500).json({
             success: false,
+            error:error.message,
             message: "user could not be logged out",
         })
     }
