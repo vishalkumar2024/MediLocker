@@ -10,7 +10,7 @@ const login = async (req, res) => {
     // 4. if email is correct, then check the password.
     // 5. assign a jwt token, send it to the client's browser
     // 6. set cookie
-    // 7. return th data
+    // 7. return the data
 
     const { email, password } = req.body; 
 
@@ -83,10 +83,10 @@ const register = async (req, res) => {
     // 7. Check for user creation- if true then return res.
 
 
-    const {userName, email, password, phone, dob, gender, bloodGroup } = req.body; //1
+    const {userName, email, password, phone, dob, gender, bloodGroup } = req.body; 
 
     try {
-    const existedUser = await UserModel.findOne({ email }) //2
+    const existedUser = await UserModel.findOne({ email })
     if (existedUser) {
         return res.status(400).json({
             success: false,
@@ -94,7 +94,7 @@ const register = async (req, res) => {
         })
     }
 
-    const user = await UserModel.create({ //4
+    const user = await UserModel.create({ 
         email,
         password,
         userName,
@@ -104,7 +104,7 @@ const register = async (req, res) => {
         bloodGroup,
     })
 
-    const token = jwt.sign( //5
+    const token = jwt.sign(
         { userId: user.id, emailId: user.email },
         process.env.SECRET,
         { expiresIn: "1d" }
@@ -118,7 +118,7 @@ const register = async (req, res) => {
         maxAge: 24 * 60 * 60 * 1000 // 1 day
     })
 
-    const createdUser = await UserModel.findById(user.id).select( //6
+    const createdUser = await UserModel.findById(user.id).select(
         "-password "
     )
 
