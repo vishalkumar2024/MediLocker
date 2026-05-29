@@ -14,9 +14,10 @@ const medicationSchema = new mongoose.Schema(
 
         dose: String,
 
-        for: String,
-
         time: String,
+
+        PrescribedFor: String,
+
     },
     {
         timestamps: true,

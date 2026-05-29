@@ -20,8 +20,10 @@ app.use(express.static("public"))
 
 
 import user from './Routes/user.route.js'
+import medical from './Routes/medical.route.js'
 
 app.use("/api/user", user)
+app.use("/api/medical", medical)
 
 
 export { app }
