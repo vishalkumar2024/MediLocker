@@ -4,13 +4,9 @@ import jwt from 'jsonwebtoken'
 
 const userSchema = new Schema(
     {
-        name: {
+        userName: {
             type: String,
-            required: true,
-            unique: true,
-            lowercase: true,
-            trim: true,
-            index: true
+            required: true
         },
 
         email: {
@@ -33,15 +29,18 @@ const userSchema = new Schema(
         },
 
         dob: {
-            type: Date,
+            required: true,
+            type: String,
         },
 
         gender: {
+            required: true,
             type: String,
             enum: ["Male", "Female", "Other"],
         },
 
         bloodGroup: {
+            required: true,
             type: String,
             enum: [
                 "A+",
@@ -89,13 +88,6 @@ const userSchema = new Schema(
         profileImage: {
             type: String,
             default: "",
-        },
-
-        // Account Role
-        role: {
-            type: String,
-            enum: ["user", "admin"],
-            default: "user",
         },
 
         // References to Other Models
