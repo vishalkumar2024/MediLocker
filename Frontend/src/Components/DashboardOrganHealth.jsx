@@ -1,11 +1,4 @@
-import {
-    Activity,
-    CheckCircle2,
-    AlertTriangle,
-    Clock,
-    Plus,
-    CircleCheck,
-} from "lucide-react";
+import { Activity, CheckCircle2, AlertTriangle, Clock, Plus, CircleCheck, } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import bodyImage from "../assets/body.png";
@@ -26,9 +19,10 @@ function DashboardOrganHealth() {
         })),
     );
 
-    const handleSubmit = async () => {
-        console.log(formData);
+    const handleSubmit = async (e) => {
 
+        e.preventDefault()
+       
         // axios.post("/api/organ-health", {
         //   organs: formData
         // })
@@ -49,7 +43,7 @@ function DashboardOrganHealth() {
 
         setCountHealthy(HealthyCount);
         setCountAttention(AttentionCount);
-    }, [organHealth]);
+    }, [formData]);
 
     return (
         <div className="space-y-6">
@@ -62,7 +56,7 @@ function DashboardOrganHealth() {
                 </div>
                 <button
                     onClick={() => setShowForm(true)}
-                    className="bg-cyan-500 hover:bg-cyan-400 text-white font-medium px-5 py-2.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-cyan-500/20 active:scale-95 text-sm flex items-center gap-2"
+                    className="bg-cyan-500 hover:bg-cyan-400 text-white font-medium px-5 py-2.5 rounded-xl transition-all cursor-pointer duration-200 hover:shadow-lg hover:shadow-cyan-500/20 active:scale-95 text-sm flex items-center gap-2"
                 >
                     <Plus className="w-4 h-4" />
                     Add Health Data
@@ -70,8 +64,8 @@ function DashboardOrganHealth() {
             </div>
 
             {showForm && (
-                <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-                    <div className="bg-[#1a222d] w-full max-w-4xl rounded-2xl p-6 max-h-[90vh] overflow-y-auto">
+                <div className="fixed inset-0 bg-black/60  backdrop-blur-sm  flex items-center justify-center z-50">
+                    <div className="bg-[#1a222d] w-full max-w-xl rounded-2xl p-6 max-h-[90vh] overflow-y-auto">
                         <div className="flex justify-between items-center mb-6">
                             <h2 className="text-xl font-bold text-white">
                                 Add Organ Health Data
@@ -89,7 +83,7 @@ function DashboardOrganHealth() {
                             {formData.map((organ, index) => (
                                 <div
                                     key={organ.name}
-                                    className="border border-white/10 rounded-xl p-4"
+                                    className="border bg-[#151e29]  border-white/10 rounded-xl p-4"
                                 >
                                     <div className="flex items-center gap-3 mb-4">
                                         <img
@@ -102,54 +96,72 @@ function DashboardOrganHealth() {
                                             {organ.name}
                                         </h3>
                                     </div>
-
+                                    
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <select
-                                            value={organ.status}
-                                            onChange={(e) => {
-                                                const updated = [...formData];
-                                                updated[index].status = e.target.value;
-                                                setFormData(updated);
-                                            }}
-                                            className="bg-[#111827] text-white p-3 rounded-lg"
-                                        >
-                                            <option value="Healthy">Healthy</option>
-                                            <option value="Need Attention">Need Attention</option>
-                                        </select>
+                                        <div>
+                                            <label className="block text-[14px] text-white/40 mb-1.5">Status</label>
+                                            <select
+                                                value={organ.status}
+                                                onChange={(e) => {
+                                                    const updated = [...formData];
+                                                    updated[index].status = e.target.value;
+                                                    setFormData(updated);
+                                                }}
+                                                className="w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white  placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm"
+                                            >
+                                                <option value="Healthy">Healthy</option>
+                                                <option value="Need Attention">Need Attention</option>
+                                            </select>
+                                        </div>
 
-                                        <input
-                                            type="date"
-                                            value={organ.lastCheck}
-                                            onChange={(e) => {
-                                                const updated = [...formData];
-                                                updated[index].lastCheck = e.target.value;
-                                                setFormData(updated);
-                                            }}
-                                            className="bg-[#111827] text-white p-3 rounded-lg"
-                                        />
+                                        <div>
+                                            <label className="block text-[14px] text-white/40 mb-1.5">Dosage</label>
+                                            <input
+                                                type="date"
+                                                value={organ.lastCheck}
+                                                onChange={(e) => {
+                                                    const updated = [...formData];
+                                                    updated[index].lastCheck = e.target.value;
+                                                    setFormData(updated);
+                                                }}
+                                                className="w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm"
+                                            />
+                                        </div>
                                     </div>
 
-                                    <textarea
-                                        placeholder="Enter note..."
-                                        value={organ.note}
-                                        onChange={(e) => {
-                                            const updated = [...formData];
-                                            updated[index].note = e.target.value;
-                                            setFormData(updated);
-                                        }}
-                                        className="w-full mt-4 bg-[#111827] text-white p-3 rounded-lg"
-                                        rows={3}
-                                    />
+                                    <div className="mt-5">
+                                        <label className="block text-[14px] text-white/40 mb-1.5">Note</label>
+                                        <textarea
+                                            placeholder="Enter note..."
+                                            value={organ.note}
+                                            onChange={(e) => {
+                                                const updated = [...formData];
+                                                updated[index].note = e.target.value;
+                                                setFormData(updated);
+                                            }}
+                                            className="w-full bg-[#192638] border border-white/10 focus:border-cyan-500/60 text-white placeholder:text-white/30 rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:ring-2 focus:ring-cyan-500/20 text-sm"
+                                            rows={3}
+                                        />
+
+                                    </div>
                                 </div>
                             ))}
 
-                            <button
-                                className="w-full bg-cyan-500 hover:bg-cyan-400 text-white py-3 rounded-xl"
-                                onClick={handleSubmit}
-                            >
-                                Save Organ Health Data
-                            </button>
+                            <div className="flex gap-3 pt-2">
+                                <button
+                                    type="button"
+                                    onClick={() => setShowForm(false)}
+                                    className="flex-1  bg-white/5 hover:bg-white/10 text-white/80 hover:text-white border border-white/10 hover:border-white/20 font-medium px-5  rounded-xl transition-all duration-200 active:scale-95 text-sm py-3">Cancel
+                                </button>
+
+                                <button
+                                    type="submit"
+                                    onClick={handleSubmit}
+                                    className="flex-1  bg-cyan-500 hover:bg-cyan-400 text-white font-medium px-5 cursor-pointer rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-cyan-500/20 active:scale-95 text-sm py-3">Save Organ Health Data
+                                </button>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             )}
