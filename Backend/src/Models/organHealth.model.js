@@ -5,31 +5,41 @@ const organHealthSchema = new mongoose.Schema(
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
+            required: true,
         },
 
         name: {
             type: String,
             required: true,
+            enum: [
+                "Heart",
+                "Lungs",
+                "Liver",
+                "Kidney",
+                "Brain",
+                "Bones",
+            ],
         },
 
         status: {
             type: String,
-            enum: ["Healthy", "Warning", "Critical"],
+            enum: ["Healthy", "Need Attention"],
             default: "Healthy",
         },
 
-        image: {
+        note: {
             type: String,
+            trim: true,
             default: "",
         },
 
-        note: String,
-
-        lastCheck: Date,
+        lastCheck: {
+            type: Date,
+        },
     },
     {
         timestamps: true,
     }
 );
 
-export default mongoose.model("OrganHealth", organHealthSchema);
+export const OrganHealth = mongoose.model("OrganHealth", organHealthSchema);
